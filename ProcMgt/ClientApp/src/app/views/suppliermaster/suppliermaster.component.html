@@ -1,0 +1,404 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Supplier Master</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-sm-12">
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <b>Supplier Details</b>
+                      </div>
+                    </div>
+                    <!--<div class="form-group row">
+                      <div class="col-12 form-group row float-right">
+                        <label class="col-md-11 col-form-label " style="padding-left:700px;">Show Supplier Details</label>
+                        <div class="col-md-1">
+                          <input style="margin-top:12px;" type="checkbox" (click)="checkboxClick()" />
+                        </div>
+                      </div>
+                    </div>-->
+                    <!--<div class="form-group row">
+                      <label class="col-md-2 col-form-label">Search</label>
+                      <div class="col-7">
+                        <input type="text" class="form-control" id="txtSearch" value={{objSupplierMaster.name}} placeholder="Search">
+                      </div>
+                      <div class="col-12">
+                        <button type="button" style="padding:6px 70px;" class="btn btn-outline-dark float-right" (click)="onSearch()">Show Grid</button>
+                      </div>
+                    </div>-->
+                    
+                      <div class="form-group row">
+                        <ag-grid-angular style="width: 100%; height: 230px;"
+                                         class="ag-theme-balham"
+                                         [rowData]="rowData"
+                                         [columnDefs]="columnDefs"
+                                         [rowSelection]="single"
+                                         [enableSorting]="true"
+                                         [paginationPageSize]="10"
+                                         [pagination]="true"
+                                         [enableColResize]="true" 
+                                         [context]="context"
+                                         [suppressRowClickSelection]="true"
+                                         [frameworkComponents]="frameworkComponents"
+                                         (gridReady)="onGridReady($event)">
+                        </ag-grid-angular>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Supplier Name</label>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" id="txtName" name="name" #name="ngModel" [(ngModel)]="objSupplierMaster.supplierName" placeholder="Supplier Name" required>
+                      <!--<small [hidden]="name.valid || name.required"
+           class="text-danger">
+      Supplier Name is required
+    </small>-->
+
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                    <label class="col-md-2 col-form-label">BR No.</label>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" id="txtBrNo" name="brNo" #brNo="ngModel" [(ngModel)]="objSupplierMaster.brNo" placeholder="BR No" required>
+                      <!--<small [hidden]="brNo.valid || brNo.required"
+           class="text-danger">
+      BR No is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Address</label>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" id="txtAddress" name="address" #address="ngModel" [(ngModel)]="objSupplierMaster.address" placeholder="Address" required>
+                      <!--<small [hidden]="address.valid || address.required"
+           class="text-danger">
+      Address is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Telephone </label>
+                    <div class="col-md-3">
+                      <input type="number" class="form-control" id="txtTelephone" name="telephone" #telephone="ngModel" [(ngModel)]="objSupplierMaster.telephone" placeholder="Telephone" required>
+
+                      <!--small [hidden]="telephone.valid || telephone.required"
+           class="text-danger">
+      Telephone is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Billing Name</label>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" name="billName" #billName="ngModel" id="txtBillName" [(ngModel)]="objSupplierMaster.billingName" placeholder="Billing Name" required>
+                      <!--<small [hidden]="billName.valid || billName.required"
+           class="text-danger">
+      Billing Name is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Billing Address</label>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" id="txtBillAdd" name="billadd" #billadd="ngModel" [(ngModel)]="objSupplierMaster.billingAddress" placeholder="Billing Address" required>
+                      <!--<small [hidden]="billadd.valid || billadd.required"
+           class="text-danger">
+      Billing Address is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <div class="col-md-12">
+                            <b>Contact Details</b>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+
+                            <div class="form-group row">
+                              <label class="col-md-5 col-form-label " style="padding:6px 30px;">Contact Person Name</label>
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" id="txtContactName" name="cpName" #cpName="ngModel" [(ngModel)]="contactName" placeholder="Contact Person Name" required>
+                                <!--<small [hidden]="cpName.valid || cpName.required"
+                       class="text-danger">
+                  Contact Person Name is required
+                </small>-->
+                              </div>
+                              <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-md-5 col-form-label" style="padding:6px 30px;">Contact Person Mobile</label>
+                              <div class="col-md-6">
+                                <input type="number" class="form-control" id="txtContactMobile" name="cpMobile" #cpMobile="ngModel" [(ngModel)]="contactMobile" placeholder="Contact Person Mobile" required>
+                                <!--<small [hidden]="cpMobile.valid || cpMobile.required"
+                       class="text-danger">
+                  Contact Person Mobile is required
+                </small>-->
+                              </div>
+                              <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-5 col-form-label" style="padding:6px 30px;">E-mail</label>
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" id="txtEmail" [(ngModel)]="email" placeholder="E-mail">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-5 col-form-label" style="padding:6px 30px;">Default</label>
+                              <div class="col-md-4 col-form-label">
+                                <input [(ngModel)]="isDefault" type="checkbox" />
+                              </div>
+
+                              <div class="col-3">
+                                <button type="button" class="btn btn-block btn-primary" (click)="AddContactDetails()">ADD</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <ag-grid-angular style="width: 100%; height: 250px;"
+                                             class="ag-theme-balham"
+                                             [columnDefs]="ContactDetailsColumnDefs"
+                                             [rowData]="ContactDetailsRowData"
+                                             [rowSelection]="single"
+                                             [enableSorting]="true"
+                                             [paginationPageSize]="10"
+                                             [enableColResize]="true"
+                                             [context]="context"
+                                             [frameworkComponents]="frameworkComponents"
+                                             (gridReady)="onGridReady2($event)">
+                            </ag-grid-angular>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--(rowClicked)="onRowClicked2($event)"-->
+                  <div class="col-sm-12">
+                    <div class="card">
+
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <div class="col-md-12">
+                            <b>Account Details</b>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <label class="col-md-2 col-form-label">Bank</label>
+                          <div class="col-md-3">
+                            <select class="form-control" id="drpBank" name="bank" #bank="ngModel" [(ngModel)]="objSupplierMaster.bankID" (ngModelChange)="BankChanged($event)" required>
+                              <option *ngFor="let suppBank of lstBank" value={{suppBank.bankID}}>{{suppBank.bankName}}</option>
+                            </select>
+                            <!--<small [hidden]="bank.valid || bank.required"
+           class="text-danger">
+      Bank is required
+    </small>-->
+                          </div>
+                          <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                          <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <label class="col-md-2 col-form-label">Branch</label>
+                          <div class="col-md-3">
+                            <select class="form-control" id="drpBranch" name="branch" #branch="ngModel" [(ngModel)]="objSupplierMaster.branchID" (ngModelChange)="BranchChanged($event)" required>
+                              <option *ngFor="let suppBranch of lstBranch" value={{suppBranch.branchID}}>{{suppBranch.branchName}}</option>
+                            </select>
+                            <!--<small [hidden]="branch.valid || branch.required"
+           class="text-danger">
+      Branch is required
+    </small>-->
+                          </div>
+                          <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                        </div>
+                        <div class="form-group row">
+                          <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <label class="col-md-2 col-form-label">Account Type</label>
+                          <div class="col-md-3">
+                            <select class="form-control" id="drpAccType" name="accType" #accType="ngModel" [(ngModel)]="objSupplierMaster.accountTypeID" (ngModelChange)="AccountTypeChanged($event)" required>
+                              <option *ngFor="let suppAcc of lstAccount" value={{suppAcc.accountTypeID}}>{{suppAcc.accountTypeName}}</option>
+                            </select>
+                            <!--<small [hidden]="accType.valid || accType.required"
+           class="text-danger">
+      Account Type is required
+    </small>-->
+                          </div>
+                          <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                          <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <label class="col-md-2 col-form-label">Account No.</label>
+                          <div class="col-md-3">
+                            <input type="number" class="form-control" id="txtAccNo" name="accNo" #accNo="ngModel" [(ngModel)]="objSupplierMaster.accountNo" placeholder="Account No" required>
+                            <!--<small [hidden]="accNo.valid || accNo.required"
+           class="text-danger">
+      Account No is required
+    </small>-->
+                          </div>
+                          <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                        </div>
+                        <div class="form-group row">
+                          <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <label class="col-md-2 col-form-label">Account Name</label>
+                          <div class="col-md-3">
+                            <input type="text" class="form-control" id="txtAccName" name="accName" #accName="ngModel" [(ngModel)]="objSupplierMaster.accountName" placeholder="Account Name" required>
+                            <!--<small [hidden]="accName.valid || accName.required"
+           class="text-danger">
+      Account Name is required
+    </small>-->
+                          </div>
+                          <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <div class="col-md-12">
+                            <b>Supplier Items</b>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group row">
+                              <label class="col-md-4 col-form-label">Item Type</label>
+                              <div class="col-md-7">
+                                <select class="form-control" id="drpSuppItems" name="itmType" #itmType="ngModel" [(ngModel)]="selectedSupplierItemType" required>
+                                  <option *ngFor="let suppItems of lstSupplierItems" value={{suppItems.itemTypeID}}>{{suppItems.itemTypeName}}</option>
+                                </select>
+                                <!--<small [hidden]="itmType.valid || itmType.required"
+                       class="text-danger">
+                  Item Type is required
+                </small>-->
+                              </div>
+                              <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-4 col-form-label">Minimum Item Capacity</label>
+                              <div class="col-md-7">
+                                <input type="text" class="form-control" name="mincapacity" #mincapacity="ngModel" id="txtMinimumItmCapacity" [(ngModel)]="minimumCapacity" placeholder="Minimum Item Capacity" required>
+                                <!--<small [hidden]="mincapacity.valid || mincapacity.required"
+                       class="text-danger">
+                  Minimum Item Capacity is required
+                </small>-->
+                              </div>
+                              <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-4 col-form-label">Supplier Lead Time</label>
+                              <div class="col-md-7">
+                                <input type="number" class="form-control" name="supLeadTime" #supLeadTime="ngModel" id="txtSupplierLeadTime" [(ngModel)]="leadTime" placeholder="Supplier Lead Time" required>
+                                <!--<small [hidden]="supLeadTime.valid || supLeadTime.required"
+                       class="text-danger">
+                  Supplier Lead Time is required
+                </small>-->
+                              </div>
+                              <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col-12 ">
+                                <button type="button" style="padding:6px 60px;" class="btn btn-primary float-right" (click)="AddSupplierRegisteredItems()">ADD</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="col-sm-12">
+                              <ag-grid-angular style="width: 100%; height: 250px;"
+                                               class="ag-theme-balham"
+                                               [rowData]="supplierItemsRowData"
+                                               [columnDefs]="supplierItemscolumnDefs"
+                                               [rowSelection]="multiple"
+                                               [enableSorting]="true"
+                                               [paginationPageSize]="10"
+                                               [enableColResize]="true"
+                                               [context]="context"
+                                               [frameworkComponents]="frameworkComponents"
+                                               (gridReady)="onGridReady3($event)">
+                              </ag-grid-angular>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Payment Method</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpPaymntMethod" name="paymentMethod" #paymentMethod="ngModel" [(ngModel)]="objSupplierMaster.paymentMethodID" (ngModelChange)="PaymentmethodChanged($event)" required>
+                        <option *ngFor="let suppPaymentMethod of lstSupplierMethod" value={{suppPaymentMethod.paymentMethodID}}>{{suppPaymentMethod.paymentMethodName}}</option>
+                      </select>
+                      <!--<small [hidden]="paymentMethod.valid || paymentMethod.required"
+           class="text-danger">
+      Payment Method is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Supplier Type</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpSuppType" name="suppType" #suppType="ngModel" [(ngModel)]="objSupplierMaster.supplierTypeID" (ngModelChange)="SupplierTypeChanged($event)" required>
+                        <option *ngFor="let suppType of lstSupplierType" value={{suppType.supplierTypeID}}>{{suppType.supplierTypeName}}</option>
+                      </select>
+                      <!--<small [hidden]="suppType.valid || suppType.required"
+           class="text-danger">
+      Supplier Type is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Is Active</label>
+                    <div class="col-md-8">
+                      <input [(ngModel)]="objSupplierMaster.isActive" style="margin-top:12px;" type="checkbox" />
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px; margin-left:10px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                      <ng-container *ngIf="show">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveSupplierMaster()">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveSupplierMaster()">Update</button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

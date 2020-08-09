@@ -1,0 +1,54 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Purchase Request Approval</strong>
+        </div>
+        <div class="card-body">
+          
+            
+          <ag-grid-angular style="width: 100%; height: 560px;"
+                           class="ag-theme-balham"
+                           [rowData]="rowData"
+                           [columnDefs]="columnDefs"
+                           [enableSorting]="true"
+                           [paginationPageSize]="10"
+                           [pagination]="true" 
+                           [enableColResize]="true"
+                           [context]="context"
+                           [frameworkComponents]="frameworkComponents"
+                           (gridReady)="onGridReady($event)">
+          </ag-grid-angular>
+            
+          
+          <!--<div class="form-group row">
+            <label class="col-md-2 col-form-label">Status</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="txtStatus" value={{objSupplierMaster.name}} placeholder="Status">
+            </div>
+            <div class="col-md-2">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            </div>
+          </div>-->
+          <!--<div class="form-group row">
+            <div class="col-12 ">
+              <button type="button" style="padding:6px 60px; margin-left:30px;" class="btn btn-primary" (click)="onAdd()">Action</button>
+            </div>
+          </div>-->
+
+        </div>
+        <div class="card-footer">
+          <!--<div class="row">
+            <div class="col-12">
+              <button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>
+              <button type="reset" style="padding:6px 40px; margin-left:10px;" class="btn btn-danger" (click)="reset()">Reset</button>
+              <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="onSave()">Save</button>
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

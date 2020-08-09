@@ -1,0 +1,51 @@
+<div class="col-12 ">
+  <div class="card">
+    <div class="card-header">
+      <!--<strong>Comment</strong>-->
+      <button type="button" class="close" style="padding:4px 10px;" (click)="onReject()" aria-label="Close">
+        <span aria-hidden="true">X</span>
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">PO No</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="txtPONo" placeholder="PO No">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">PO Date</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="txtPODate" placeholder="PO Date">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">Item Req No</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="txtItemReqNo" placeholder="Item Req No">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">Item Req Title</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="txtItemReqTitle" placeholder="Item Req Title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <input type="text" class="form-control" id="" placeholder="">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-6 ">
+          <button type="button" style="padding:6px 40px;" class="btn btn-success float-left" (click)="onApprove()">Approve</button>
+        </div>
+        <div class="col-6 ">
+          <button type="button" style="padding:6px 50px;" class="btn btn-danger float-right" (click)="onReject()">Reject</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+    </div>
+  </div>
+</div>

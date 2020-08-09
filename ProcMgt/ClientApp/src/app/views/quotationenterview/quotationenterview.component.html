@@ -1,0 +1,57 @@
+<!--<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Quatation Enter</strong>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <b style="padding:6px 30px;">Pending Quotation Request Details </b>
+
+            <ag-grid-angular style="width: 100%; height: 230px;"
+                             class="ag-theme-balham"
+                             [rowData]="rowData"
+                             [columnDefs]="columnDefs"
+                             [rowSelection]="rowSelection"
+                             [enableSorting]="true"
+                             [paginationPageSize]="5"
+                             [pagination]="true"
+                             [enableColResize]="true"
+                             [context]="context"
+                             [frameworkComponents]="frameworkComponents"
+                             (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
+          </div>
+          <ng-container *ngIf="show">
+            <div class="card">
+              <div class="card-body">
+                <div class="col-sm-12">
+                  <div class="form-group row">
+                    <b style="padding:6px 30px;">Quotation Details </b>
+
+                    <ag-grid-angular style="width: 100%; height: 230px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="QuotationEnterrowData"
+                                     [columnDefs]="QuotationEntercolumns"
+                                     [enableSorting]="true"
+                                     [paginationPageSize]="5"
+                                     [pagination]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady2($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+        <div class="card-footer">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->

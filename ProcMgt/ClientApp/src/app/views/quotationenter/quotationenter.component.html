@@ -1,0 +1,276 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Quotation Enter</strong>
+        </div>
+        <div class="card-body">
+          <div class="card">
+            <div class="card-body">
+              <div class="form-group row">
+                <b style="padding:6px 30px;">Pending Quotation Request Details </b>
+
+                <ag-grid-angular style="width: 100%; height: 380px;"
+                                 class="ag-theme-balham"
+                                 [rowData]="pendingQuotReqDetData"
+                                 [columnDefs]="pendingQuotReqDetColums"
+                                 [rowSelection]="rowSelection"
+                                 [enableSorting]="true"
+                                 [paginationPageSize]="10"
+                                 [pagination]="true"
+                                 [enableColResize]="true"
+                                 [context]="context"
+                                 [suppressRowClickSelection]="true"
+                                 [frameworkComponents]="frameworkComponents"
+                                 (gridReady)="onGridReady($event)"> 
+                </ag-grid-angular>
+              </div>
+            </div>
+          </div>
+
+          <ng-container *ngIf="show">
+            <div class="card">
+              <div class="card-body">
+                <div class="col-sm-12">
+                  <div class="form-group row">
+                    <b style="padding:6px 30px;">Quotation Details </b>
+
+                    <ag-grid-angular style="width: 100%; height: 230px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="QuotationEnterrowData"
+                                     [columnDefs]="QuotationEntercolumns"
+                                     [enableSorting]="true" 
+                                     [paginationPageSize]="10" 
+                                     [pagination]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [suppressRowClickSelection]="true"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (cellClicked) = "onCellClicked($event)"
+                                     (cellValueChanged)="onCellValueChanged($event)"
+                                     (gridReady)="onGridReady2($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+        <div class="card-footer">
+          <div class="row">
+              <div class="col-12">
+                <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="saveModifiedRows()">Save</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Quatation Enter</strong>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <ag-grid-angular style="width: 100%; height: 150px;"
+                             class="ag-theme-balham"
+                             [rowData]="rowData1"
+                             [columnDefs]="columnDefs1"
+                             [rowSelection]="rowSelection"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [context]="context"
+                             [suppressRowClickSelection]="true"
+                             [frameworkComponents]="frameworkComponents"
+                             (gridReady)="onGridReady($event)"
+                             (selectionChanged)="getSelectedRows($event)">
+            </ag-grid-angular>
+          </div>
+          <ng-container *ngIf="show">
+            <div class="form-group row">
+              <b style="padding:6px 30px;">Suppliers </b>
+
+              <ag-grid-angular style="width: 100%; height: 150px;"
+                               class="ag-theme-balham"
+                               [rowData]="rowData2"
+                               [columnDefs]="columnDefs2"
+                               [enableSorting]="true"
+                               [enableColResize]="true"
+                               [context]="context"
+                               [suppressRowClickSelection]="true"
+                               [frameworkComponents]="frameworkComponents"
+                               (gridReady)="onGridReady($event)">
+              </ag-grid-angular>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="show2">
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Qutation Ref No</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="txtCategoryName" value={{objQuotationEnter.qutationRefNo}} placeholder="Ref No">
+              </div>
+               <label class="col-md-2 col-form-label">Date</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="txtCategoryCode" value={{objQuotationEnter.date}}  placeholder="Date">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Validity</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control"  value={{objQuotationEnter.validity}} id="txtCategoryCode">
+              </div>
+              <label class="col-md-2 col-form-label">Payment Type</label>
+              <div class="col-md-4">
+                <select class="form-control" id="txtCategoryCode">
+                  <option *ngFor="let paymentmethod of lstPaymentMethod" value={{paymentmethod.paymentMethodID}}>{{paymentmethod.paymentMethodName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Credit Period</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" value={{objQuotationEnter.creditPeriod}}  id="txtCategoryCode">
+              </div>
+              <label class="col-md-2 col-form-label">Requierd Advance Payment</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" value={{objQuotationEnter.requierdAdvancePayment}} id="txtCategoryCode">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Warranty Policy</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" value={{objQuotationEnter.warrantyPolicy}} id="txtCategoryCode">
+              </div>
+              <label class="col-md-2 col-form-label">Delivery Terms</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" value={{objQuotationEnter.deliveryTerms}} id="txtCategoryCode">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Comments</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" value={{objQuotationEnter.comments}} id="txtCategoryCode">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <b style="padding:6px 30px;">Item List</b>
+                      <ag-grid-angular style="width: 100%; height: 150px;"
+                                       class="ag-theme-balham"
+                                       [rowData]="rowData3"
+                                       [columnDefs]="columnDefs3"
+                                       [rowSelection]="rowSelection"
+                                       [enableSorting]="true"
+                                       [enableColResize]="true"
+                                       [context]="context"
+                                       [suppressRowClickSelection]="true"
+                                       [frameworkComponents]="frameworkComponents"
+                                       (gridReady)="onGridReady($event)"
+                                       (selectionChanged)="getSelectedRows2($event)">
+                      </ag-grid-angular>
+                    </div>
+                    <ng-container *ngIf="show3">
+
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Unit Value (Without Tax)</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" value={{objQuotationEnter.unitValueWT}} id="txtCategoryCode">
+                        </div>
+                        <label class="col-md-2 col-form-label">Quantity</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" value={{objQuotationEnter.quantity}} id="txtCategoryCode">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Discount (Per Unit)</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" value={{objQuotationEnter.discountPerUnit}} id="txtCategoryCode">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Tax Type</label>
+                        <div class="col-md-4">
+                          <select class="form-control" id="txtCategoryCode">
+                            <option *ngFor="let Tax of lsttax" value={{Tax.TaxID}}>{{Tax.TaxName}}</option>
+                          </select>
+                        </div>
+                        <label class="col-md-2 col-form-label">Tax Amount</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" value={{objQuotationEnter.taxAmount}} id="txtCategoryCode">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-12">
+                          <button type="button" style="padding:6px 50px; margin-right:30px;" class="btn btn-primary float-right" (click)="onAddTax()">Add - Tax</button>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group row">
+                          <b style="padding:6px 30px;">Tax Type and Tax Amount</b>
+                          <ag-grid-angular style="width: 100%; height: 150px;"
+                                           class="ag-theme-balham"
+                                           [rowData]="rowData4"
+                                           [columnDefs]="columnDefs4"
+                                           [enableSorting]="true"
+                                           [enableColResize]="true"
+                                           [context]="context"
+                                           [suppressRowClickSelection]="true"
+                                           [frameworkComponents]="frameworkComponents"
+                                           (gridReady)="onGridReady($event)">
+                          </ag-grid-angular>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Availability</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" value={{objQuotationEnter.availability}} id="txtCategoryCode">
+                        </div>
+                        <label class="col-md-2 col-form-label">Unit Value(with tax)</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" value={{objQuotationEnter.unitValueWithTax}} id="txtCategoryCode">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-12">
+                          <button type="button" style="padding:6px 50px; margin-right:30px;" class="btn btn-primary float-right" (click)="onSaveItem()">Save Item</button>
+                        </div>
+                      </div>
+
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="card-footer">
+          <ng-container *ngIf="show2">
+            <div class="row">
+              <div class="col-12">
+                <button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>
+                <button type="reset" style="padding:6px 40px; margin-left:10px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="onSave()">Save</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->

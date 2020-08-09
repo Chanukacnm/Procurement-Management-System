@@ -1,0 +1,149 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Item Category</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Category Name</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="txtCategoryName" value={{objItemcategory.itemCategoryName}} placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Category Code</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="txtCategoryCode" value={{objItemcategory.itemCategoryId}} placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Price</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="txtPrice" placeholder="Price">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Status</label>
+                    <div class="col-md-8">
+                      <select class="form-control" id="drpStatus">
+                        <option *ngFor="let ststus of lststatus" value={{ststus.statusID}}>{{ststus.statusName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>
+                      <button type="reset" style="padding:6px 40px; margin-left:70px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                      <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="onSave()">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Search</label>
+                    <div class="col-7">
+                      <input type="text" class="form-control" id="txtSearch" value={{objItemcategory.itemCategoryName}} placeholder="Search">
+                    </div>
+                    <div class="col-3">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-outline-dark" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <ag-grid-angular style="width: 100%; height: 150px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="rowData"
+                                     [columnDefs]="columnDefs"
+                                     [rowSelection]="rowSelection"
+                                     [enableSorting]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Item Category </strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="txtCategoryName">Category Name</label>
+                <input type="text" class="form-control" id="txtCategoryName" placeholder="Enter category name">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="txtCategoryCode">Category Code</label>
+                <input type="text" class="form-control" id="txtCategoryCode" placeholder="Enter category code">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="txtCategoryCode">Price</label>
+                <input type="text" class="form-control" id="txtPrice" placeholder="Enter Price">
+              </div>
+            </div>
+          </div><!--/.row-->
+<!--<div class="row align-items-center">
+  <div class="col-3">
+  </div>
+  <div class="col-3">
+  </div>
+  <div class="col-3">
+    <button type="button" class="btn btn-block btn-primary" (click)="onSearch()">Search</button>
+  </div>
+  <div class="col-3">
+    <button type="button" class="btn btn-block btn-success" (click)="onSave()">Save</button>
+  </div>
+</div><!--/.row-->
+<!--<div class="row">
+  <div class="col-sm-12">
+    <ag-grid-angular style="width: 100%; height: 300px;"
+                     class="ag-theme-balham"
+                     [rowData]="rowData"
+                     [columnDefs]="columnDefs">-->
+<!--[context]="context"
+[frameworkComponents]="frameworkComponents"
+(gridReady)="onGridReady($event)"-->
+<!--<!--</ag-grid-angular>
+  </div>
+
+</div><!--/.row-->
+<!--</div>
+  <div class="card-footer">
+  </div>
+</div>-->
+<!--</div><!--/.col-->
+<!--</div>--><!--/.row-->
+<!--</div>-->
+
+

@@ -1,0 +1,363 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Company Master</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company Name</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyName" name="companyName" [(ngModel)]="objCompany.companyName" placeholder="Company Name" required>
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Company Code</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyCode" name="companyCode" [(ngModel)]="objCompany.companyCode" placeholder="Company Code" required>
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company Address Line 1</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyAd1" name="companyAd1" [(ngModel)]="objCompany.companyAddressLine1" placeholder="Company Address Line 1" required>
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Company Address Line 2</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyAd2" name="companyAd2" [(ngModel)]="objCompany.companyAddressLine2" placeholder="Company Address Line 2">
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company Address Line 3</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyAd3" name="companyAd3" [(ngModel)]="objCompany.companyAddressLine3" placeholder="Company Address Line 3" >
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>&nbsp;&nbsp;
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Company Address Line 4</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyAd4" name="companyAd4" [(ngModel)]="objCompany.companyAddressLine4" placeholder="Company Address Line 4">
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company Telephone No</label>
+                        <div class="col-md-3">
+                          <input type="number" class="form-control" id="txtcompanyTel" name="companyTel" [(ngModel)]="objCompany.companyTelephoneNo" placeholder="Company Telephone No" >
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>&nbsp;&nbsp;
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Company Fax</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyFax" name="companyFax" [(ngModel)]="objCompany.companyFax" placeholder="Company Fax">
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company E-mail</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyEmail" name="companyEmail" [(ngModel)]="objCompany.email" placeholder="Company E-mail" >
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>&nbsp;&nbsp;
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Company Web</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyWeb" name="companyWeb" [(ngModel)]="objCompany.companyWeb" placeholder="Company Web">
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company Registration No</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtcompanyRegNo" name="companyRegNo" [(ngModel)]="objCompany.companyRegistrationNo" placeholder="Company Registration No" required>
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Vat Registration No</label>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="txtVatRegNo" name="VatRegNo" [(ngModel)]="objCompany.vatRegistrationNo" placeholder="Vat Registration No">
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><!--<b>*</b>--></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Is Active</label>&nbsp;&nbsp;
+                        <div class="col-md-3">
+                          <input style="margin-top:12px;" [(ngModel)]="objCompany.isActive" type="checkbox" />
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <label class="col-md-2 col-form-label">Is Group of Company</label>
+                        <div class="col-md-3">
+                          <input style="margin-top:12px;" [(ngModel)]="this.objCompany.isGroupofCompany" (ngModelChange)="isClicked($event)"  type="checkbox" />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company Logo</label>
+                        <div class="col-md-2">
+                          <!--<input type="file" #file2 placeholder="Choose Image" id="uploadCaptureInputFile" accept="image/*">-->
+
+                          <input type="file" #file placeholder="Choose file" id="uploadCaptureInputFile" accept="image/*">
+                          <!--<button type="button" class="btn btn-danger" style=" background-color: #cc52d6; border: #a633cc;" (click)="file.click()">Upload Image</button>-->
+                        </div>
+                        <div class="col-md-1">
+                          {{filename}}
+                          <button type="reset" style="padding:1px 5px; background: linear-gradient(to bottom right, #ff0000 0%, #ff6600 100%); border: #a633cc; float:right;" class="btn btn-danger" (click)="resetFile(file.files)"><b>X</b></button>
+                        </div>
+
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-5">
+                          <img src="{{imagePath}}" style="max-height:100px; max-width:250px;" />
+
+                          <button type="button" class="btn btn-danger" style="float:right;  background-color: #ff7a00;  border: #ff3300;" (click)="uploadFile(file.files)">Upload Image</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <label class="text"><b><i>Define Group of Company</i></b></label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Name</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyName" name="gcompanyName" [(ngModel)]="groupCompanyName" [disabled]="!isGroupCompany" placeholder="Company Name" required>
+
+                            </div>
+                            <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Code</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyCode" name="gcompanyCode" [(ngModel)]="groupCompanyCode" [disabled]="!isGroupCompany" placeholder="Company Code" required>
+
+                            </div>
+                            <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Address Line 1</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyAD1" name="gcompanyAD1" [(ngModel)]="groupcompanyAddressLine1" [disabled]="!isGroupCompany" placeholder="Company Address Line 1" required>
+
+                            </div>
+                            <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Address Line 2</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyAD2" name="gcompanyAD2" [(ngModel)]="groupcompanyAddressLine2" [disabled]="!isGroupCompany" placeholder="Company Address Line 2" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Address Line 3</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyAD3" name="companyAD3" [(ngModel)]="groupcompanyAddressLine3" [disabled]="!isGroupCompany" placeholder="Company Address Line 3" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Address Line 4</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyAD4" name="gcompanyAD4" [(ngModel)]="groupcompanyAddressLine4" [disabled]="!isGroupCompany" placeholder="Company Address Line 4" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Telephone No</label>
+                            <div class="col-md-7">
+                              <input type="number" class="form-control" id="txtgcompanyTel" name="gcompanyTel" [(ngModel)]="gcompanyTelephoneNo" [disabled]="!isGroupCompany"placeholder="Company Telephone No" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Fax</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyFax" name="gcompanyFax" [(ngModel)]="gcompanyFax" [disabled]="!isGroupCompany" placeholder="Company Fax" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company E-mail</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyEmail" name="gcompanyEmail" [(ngModel)]="gcompanyEmail" [disabled]="!isGroupCompany" placeholder="Company E-mail" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Web</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyWeb" name="gcompanyWeb" [(ngModel)]="gcompanyWeb" [disabled]="!isGroupCompany" placeholder="Company Web" >
+
+                            </div>
+                            <label class="text-danger" style="zoom:120%;"></label>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Registration No</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyRegNo" name="gcompanyRegNo" [(ngModel)]="gcompanyRegistrationNo" [disabled]="!isGroupCompany" placeholder="Company Registration No" required>
+
+                            </div>
+                            <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Vat Registration No</label>
+                            <div class="col-md-7">
+                              <input type="text" class="form-control" id="txtgcompanyVatNo" name="gcompanyVatNo" [(ngModel)]="vatRegistrationNo" [disabled]="!isGroupCompany" placeholder="Vat Registration No" >
+
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Is Active</label>
+                            <div class="col-md-7">
+                              <input style="margin-top:12px;" [(ngModel)]="gisActive" [disabled]="!isGroupCompany" type="checkbox" />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-md-4 col-form-label">Company Logo</label>
+                            <div class="col-md-5">
+                              <!--<input type="file" #file2 placeholder="Choose Image" id="uploadCaptureInputFile" accept="image/*">-->
+
+                              <input type="file" #file placeholder="Choose file" id="uploadCaptureInputFile" [disabled]="!isGroupCompany" accept="image/*">
+                              <!--<button type="button" class="btn btn-danger" style=" background-color: #cc52d6; border: #a633cc;" (click)="file.click()">Upload Image</button>-->
+                            </div>
+                            <div class="col-md-2">
+                              {{filename2}}
+                              <button type="reset" style="padding:1px 5px; background: linear-gradient(to bottom right, #ff0000 0%, #ff6600 100%); border: #a633cc; float:right;" class="btn btn-danger" [disabled]="!isGroupCompany" (click)="resetFile2(file.files)"><b>X</b></button>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <div class="col-11">
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <img src="{{imagePath2}}" style="max-height:100px; max-width:250px;" />
+
+                              <button type="button" class="btn btn-danger" style="float:right;  background-color: #ff7a00;  border: #ff3300;" (click)="uploadFile2(file.files)" [disabled]="!isGroupCompany">Upload Image</button>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="col-11 ">
+                              <button type="button" style="padding:6px 60px;" class="btn btn-primary float-right" (click)="AddGroupOfCompanies()" [disabled]="!isGroupCompany">ADD</button>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="form-group row">
+                                <ag-grid-angular style="width: 100%; height: 750px;"
+                                                 class="ag-theme-balham"
+                                                 [rowData]="rowData2"
+                                                 [columnDefs]="columnDefs2"
+                                                 [rowSelection]="single"
+                                                 [enableSorting]="true"
+                                                 [enableFilter]="true"
+                                                 [paginationPageSize]="15"
+                                                 [pagination]="true"
+                                                 [enableColResize]="true"
+                                                 [context]="context"
+                                                 [showToolPanel]="true"
+                                                 [frameworkComponents]="frameworkComponents"
+                                                 (gridReady)="onGridReady2($event)">
+                                </ag-grid-angular>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="row">
+                        <div class="col-12">
+                          <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                          <button type="reset" style="padding:6px 40px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                          <ng-container *ngIf="show">
+                            <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveCompany()">Save</button>
+                          </ng-container>
+                          <ng-container *ngIf="show2">
+                            <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveCompany()">Update</button>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <ag-grid-angular style="width: 100%; height: 380px;"
+                                         class="ag-theme-balham"
+                                         [rowData]="rowData"
+                                         [columnDefs]="columnDefs"
+                                         [rowSelection]="single"
+                                         [enableSorting]="true"
+                                         [enableFilter]="true"
+                                         [paginationPageSize]="10"
+                                         [pagination]="true"
+                                         [enableColResize]="true"
+                                         [context]="context"
+                                         [showToolPanel]="true"
+                                         [frameworkComponents]="frameworkComponents"
+                                         (gridReady)="onGridReady($event)">
+                        </ag-grid-angular>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="card-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

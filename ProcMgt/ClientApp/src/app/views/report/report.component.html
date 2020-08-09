@@ -1,0 +1,465 @@
+
+
+<!--<head>
+  <link href="https://cdn.syncfusion.com/14.3.0.52/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+  <script src="node_modules/babel-runtime/node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js" type="text/javascript"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+  <script src="https://cdn.syncfusion.com/14.3.0.49/js/web/ej.web.all.min.js" type="text/javascript"></script>
+  <script src="https://cdn.syncfusion.com/14.3.0.49/js/common/ej.angular2.min.js"></script>
+  <script src="systemjs.config.js"></script>
+</head>
+<body>
+  <ej-app>Loading...</ej-app>
+
+  <ej-reportviewer id="reportViewer_Control" [reportServiceUrl]="serviceUrl" [processingMode]="Remote" [reportServerUrl]="serverUrl" [reportPath]="reportPath">
+  </ej-reportviewer>
+</body>-->
+
+
+<!--<div class="container">
+  <ssrs-reportviewer [reportserver]="reportServer"
+                     [reporturl]="reportUrl"
+                     [showparameters]="showParameters"
+                     [parameters]="parameters"
+                     [language]="language"
+                     [width]="width"
+                     [height]="height"
+                     [toolbar]="toolbar">
+  </ssrs-reportviewer>
+</div>-->
+
+
+
+<!--<div class="container">
+  <ssrs-reportviewer [reportserver]="reportServer"
+                     [reporturl]="reportUrl"
+                     [showparameters]="showParameters"
+                     [parameters]="parameters"
+                     [language]="language"
+                     [width]="width"
+                     [height]="height"
+                     [toolbar]="toolbar">
+  </ssrs-reportviewer>
+</div>-->
+
+
+
+
+
+
+<!--<body>
+  <p>report works!</p>
+
+  <div>
+    <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="testReport()">Generate Report</button>
+  </div>
+  <div id="section-to-print" *ngIf="allRequestHistory">
+    <table>
+      <caption><strong>Item Request</strong></caption>
+      <tr>
+        <th>RequestTitle</th>
+        <th>AssetCode</th>
+        <th>NoOfUnits</th>
+      </tr>
+      <tr *ngFor="let itemrequest of allRequestHistory">
+        <td>{{itemrequest.requestTitle }}</td>
+        <td>{{itemrequest.assetCode }}</td>
+        <td>{{itemrequest.noOfUnits }}</td>
+      </tr>
+    </table>
+
+  </div>
+</body>-->
+
+<body>
+  <div class="form-group row">
+    <div class="col-md-3">
+      <label class="">Report Type</label>
+      <select class="form-control" name="reportType" id="reportType" (change)="selectReport($event)">
+        <option value="RqstHist">Request history report</option>
+        <option value="ApprHist">Approval history report</option>
+        <option value="GRNHist">GRN history report</option>
+        <option value="ReconHist">Reconciliation report</option>
+        <!--<option value="poreport">Purchaseorder report </option>-->
+      </select>
+    </div>
+    <ng-container *ngIf="show4">
+      <div class="col-md-2">
+        <label class="" for="date-input">From Date:</label>
+        <!--<div class="">
+      <input class="form-control" id="dtFromdate" type="date" name="required-date" [(ngModel)]="FromDate">
+    </div>-->
+        <div class="">
+          <input class="form-control" id="dtFromdate" type="date" name="from-date" [(ngModel)]="objReport.fromDate">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <label class="" for="date-input">To Date:</label>
+        <div class="">
+          <input class="form-control" id="dtTodate" type="date" name="to-date" [(ngModel)]="objReport.toDate" (change)="TestPoreport()" >
+        </div>
+      </div>
+     
+      <!--<div class="col-md-2">
+        <label class="" for="supplier">Supplier Name</label>
+        <select class="form-control" name="reportType" id="reportType" [(ngModel)]="objReport.supplierID" (change)="TestPONumbers()">
+          <option value="-1">select supplier</option>
+          <option *ngFor="let supplierObject of supplierArray" value={{supplierObject.supplierID}}>
+            {{supplierObject.supplierName}}
+          </option>
+
+
+
+        </select>
+      </div>-->
+     
+      <!--<div class="col-md-2">
+        <label class="" for="pono">PO No</label>
+        <select class="form-control" name="reportType" id="reportType" (change)="selectReport($event)">
+          <option value="RqstHist">PO No</option>
+          
+        </select>
+        
+      </div>-->
+
+      
+
+       
+   
+
+
+
+
+
+</ng-container>
+    <ng-container *ngIf="show5">
+      <div class="col-md-3">
+        <label class="" for="date-input">Select Month:</label>
+        <div class="">
+          <input class="form-control" id="monthyear" type="month" name="to-month">
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+  <br />
+  <div class="col-md-6">
+    <button type="button" style="padding:6px 20px; margin-right:20px;" class="btn btn-success" (click)="testReport()">Generate Report</button>
+    <input type="button" style="padding:6px 40px;color:white;background-color:lightsalmon" class="btn" onclick="javascript:window.print()" value="Print" />
+  </div>
+  <br />
+  <ng-container *ngIf="show">
+    <div id="section-to-print" style="background-color:white" *ngIf="allRequestHistory">
+     
+      <h1 style="text-align: center;">Request History Report</h1>
+
+      <!-- Custom HTML header -->
+      <div class="header" style="font-family:'Times New Roman'">
+        Report generated for <span style="color:#00001a;"><b>{{FromDate}}</b></span> to <span style="color:#00001a;"><b>{{ToDate}}</b></span> Item Requests.
+      </div><br />
+
+      <!-- style="page-break-before: always;" -->
+
+      <div class="custom-page-start">
+        <div>
+          <table class="reportTable">
+            <!--<caption><strong>Request history</strong></caption>-->
+            <thead>
+              <tr>
+                <th>Request Title</th>
+                <!--<th>Asset Code</th>-->
+                <th>No Of Units</th>
+                <th>Requested User</th>
+                <th>Requested Date Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let itemrequest of allRequestHistory">
+                <td style="font-family:'Times New Roman'">{{itemrequest.requestTitle }}</td>
+                <!--<td style="font-family:'Times New Roman'">{{itemrequest.assetCode }}</td>-->
+                <td style="font-family:'Times New Roman'">{{itemrequest.noOfUnits }}</td>
+                <td style="font-family:'Times New Roman'">{{itemrequest.requestedUserName }}</td>
+                <td style="font-family:'Times New Roman'">{{itemrequest.requestedDateTime }}</td>
+                <td style="font-family:'Times New Roman'">{{itemrequest.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div><br />
+
+      <!--<div class="custom-page-start" style="page-break-before: always;">
+        <h2>Client</h2>
+
+        <p>Name: XXX</p>
+        <p>Summary: YYY</p>
+      </div>-->
+      <!-- Custom HTML footer -->
+      <div class="footer">
+        <span style="font-size:10px;">PROKURA. Powered by CICRA Solutions (PVT) LTD.</span>
+      </div><br />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="show2">
+    <div id="section-to-print" style="background-color:white" *ngIf="ApprovedHistory">
+      
+      <h1 style="text-align: center;">Approved History Report</h1>
+
+      <!-- Custom HTML header -->
+      <div class="header" style="font-family:'Times New Roman'">
+        Report generated for <span style="color:#00001a;"><b>{{FromDate}}</b></span> to <span style="color:#00001a;"><b>{{ToDate}}</b></span> Approved Items.
+      </div><br />
+
+      <!-- style="page-break-before: always;" -->
+
+      <div class="custom-page-start">
+        <div>
+          <table class="reportTable">
+            <!--<caption><strong>Request history</strong></caption>-->
+            <thead>
+              <tr>
+                <th>Request Title</th>
+                <th>Item Description</th>
+                <th>No of Units</th>
+                <th>Requested User</th>
+                <th>Requested Date Time</th>
+                <th>Approved Date Time</th>
+                <th>Approver Name</th>
+                <th>Approval Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let approvedItem of ApprovedHistory">
+                <td style="font-family:'Times New Roman'">{{approvedItem.requestTitle }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.itemDescription }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.noOfUnits }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.requestedUserName }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.requestedDateTime }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.approvedDateTime }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.approvedUserName }}</td>
+                <td style="font-family:'Times New Roman'">{{approvedItem.approvalComment }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div><br />
+
+      <!--<div class="custom-page-start" style="page-break-before: always;">
+        <h2>Client</h2>
+
+        <p>Name: XXX</p>
+        <p>Summary: YYY</p>
+      </div>-->
+      <!-- Custom HTML footer -->
+      <div class="footer">
+        <span style="font-size:10px;">PROKURA. Powered by CICRA Solutions (PVT) LTD.</span>
+      </div><br />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="show3">
+    <div id="section-to-print" style="background-color:white" *ngIf="GrnHistory">
+      
+      <h1 style="text-align: center;">GRN History Report</h1>
+
+      <!-- Custom HTML header -->
+      <div class="header" style="font-family:'Calibri'">
+        Report generated for <span style="color:#00001a;"><b>{{FromDate}}</b></span> to <span style="color:#00001a;"><b>{{ToDate}}</b></span> GRN.
+      </div><br />
+
+      <!-- style="page-break-before: always;" -->
+      <div class="custom-page-start">
+
+        <div>
+          <table class="reportTable">
+            <thead>
+              <tr>
+                <th>GRN No</th>
+                <th>Recived Date</th>
+                <th>Invoice No</th>
+                <th>Item Description</th>
+                <th>Excepted Quantity</th>
+                <th>Recived Quantity</th>
+                <th>Rejected Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--<tr *ngFor="let grnheader of GrnHistory">
+                <td [attr.rowspan]="grnheader.arndetail.length">{{grnheader.arnnumber }}</td>
+                <td [attr.rowspan]="grnheader.arndetail.length">{{grnheader.recivedDate }}</td>
+                <td [attr.rowspan]="grnheader.arndetail.length">{{grnheader.invoiceNo }}</td>
+
+
+                <td *ngFor="let grndetails of grnheader.arndetail">{{grndetails.invoiceQty }}</td>
+                <td *ngFor="let grndetails of grnheader.arndetail">{{grndetails.recivedQty }}</td>
+                <td *ngFor="let grndetails of grnheader.arndetail">{{grndetails.rejectedQty }}</td>
+              </tr>-->
+
+              <ng-container *ngFor="let grnheader of GrnHistory">
+                <tr>
+                  <td [attr.rowspan]="grnheader.arndetailResource.length + 1" style="font-family:'Times New Roman'">{{grnheader.arnnumber }}</td>
+                  <td [attr.rowspan]="grnheader.arndetailResource.length + 1" style="font-family:'Times New Roman'">{{grnheader.recivedDate }}</td>
+                  <td [attr.rowspan]="grnheader.arndetailResource.length + 1" style="font-family:'Times New Roman'">{{grnheader.invoiceNo }}</td>
+                </tr>
+                <tr *ngFor="let grndetails of grnheader.arndetailResource">
+                  <td style="font-family:'Times New Roman'">{{grndetails.itemDescription }}</td>
+                  <td style="font-family:'Times New Roman'">{{grndetails.invoiceQty }}</td>
+                  <td style="font-family:'Times New Roman'">{{grndetails.recivedQty }}</td>
+                  <td style="font-family:'Times New Roman'">{{grndetails.rejectedQty }}</td>
+                </tr>
+              </ng-container>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br />
+
+      <!--<div class="custom-page-start" style="page-break-before: always;">
+        <h2>Client</h2>
+
+        <p>Name: XXX</p>
+        <p>Summary: YYY</p>
+      </div>-->
+      <!-- Custom HTML footer -->
+      <div class="footer">
+        <span style="font-size:10px;">PROKURA. Powered by CICRA Solutions (PVT) LTD.</span>
+      </div><br />
+    </div>
+  </ng-container>
+  <ng-container *ngIf="show6">
+    <div id="section-to-print" style="background-color:white" *ngIf="reconciliationHistory">
+      
+      <h1 style="text-align: center;">Reconciliation Report</h1>
+
+      <!-- Custom HTML header -->
+      <div class="header" style="font-family:'Calibri'">
+        Report generated for <span style="color:#00001a;"><b>{{FromDate}}</b></span> to <span style="color:#00001a;"><b>{{ToDate}}</b></span> Reconsilations.
+      </div><br />
+
+      <!-- style="page-break-before: always;" -->
+      <div class="custom-page-start">
+
+        <div>
+          <table class="reportTable">
+            <thead>
+              <tr>
+                <th>Department Name</th>
+                <th>Item Type</th>
+                <th>Item Description</th>
+                <th>No of Units</th>
+                <th>Total Item Request</th>
+                <th>Total Pending Item Requests</th>
+                <th>Total Approved Item Requests</th>
+                <th>Total Rejected Item Requests</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <!--<ng-container *ngFor="let reconHistry of reconciliationHistory; let i=index ">
+      <tr>
+        <td style="font-family:'Times New Roman'">{{i>0 && reconciliationHistory[i-1].departmentName == reconHistry.departmentName? '':reconHistry.departmentName }}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.itemTypeName}}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.itemDescription}}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.noOfUnits}}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.totalItemRequests}}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.totalPendingItemRequests}}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.totalApprovedItemRequests}}</td>
+        <td style="font-family:'Times New Roman'">{{reconHistry.totalRejectedItemRequests}}</td>
+      </tr>
+    </ng-container>-->
+              <ng-container *ngFor="let reconHistry of reconciliationHistory; let i=index ">
+                <tr *ngIf="!(i>0 && reconciliationHistory[i-1].departmentName == reconHistry.departmentName)">
+                  <td style="font-family:'Times New Roman'" [attr.colspan]="8"><b>{{reconHistry.departmentName }}</b></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.itemTypeName}}</td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.itemDescription}}</td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.noOfUnits}}</td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.totalItemRequests}}</td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.totalPendingItemRequests}}</td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.totalApprovedItemRequests}}</td>
+                  <td style="font-family:'Times New Roman'">{{reconHistry.totalRejectedItemRequests}}</td>
+                </tr>
+              </ng-container>
+
+
+
+
+              <!--<tr *ngFor="let reconHistry of reconciliationHistory ">
+                <td style="font-family:'Times New Roman'">{{reconHistry.departmentName}}</td>
+
+                <td style="font-family:'Times New Roman'">{{reconHistry.itemTypeName}}</td>
+                <td style="font-family:'Times New Roman'">{{reconHistry.itemDescription}}</td>
+                <td style="font-family:'Times New Roman'">{{reconHistry.noOfUnits}}</td>
+                <td style="font-family:'Times New Roman'">{{reconHistry.totalItemRequests}}</td>
+                <td style="font-family:'Times New Roman'">{{reconHistry.totalApprovedItemRequests}}</td>
+              </tr>-->
+
+
+
+
+                <!--<tr *ngFor="let reconDept of reconHistry">
+                  <td [attr.rowspan]="reconDept.length + 1" style="font-family:'Times New Roman'">{{reconDept.departmentName}}</td>
+                  <td [attr.rowspan]="reconDept.length + 1" style="font-family:'Times New Roman'">{{reconDept.itemTypeName}}</td>
+                  <td [attr.rowspan]="reconDept.length + 1" style="font-family:'Times New Roman'">{{reconDept.itemDescription}}</td>
+                  <td [attr.rowspan]="reconDept.length + 1" style="font-family:'Times New Roman'">{{reconDept.noOfUnits}}</td>
+                  <td [attr.rowspan]="reconDept.length + 1" style="font-family:'Times New Roman'">{{reconDept.departmentName}}</td>
+                  <td [attr.rowspan]="reconDept.length + 1" style="font-family:'Times New Roman'">{{reconDept.departmentName}}</td>
+                </tr>-->
+                <!--<tr>
+                  <td>11</td>
+                  <td>22</td>
+                  <td>33</td>
+                  <td>44</td>
+                </tr>-->
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br />
+
+      <!--<div class="custom-page-start" style="page-break-before: always;">
+      <h2>Client</h2>
+
+      <p>Name: XXX</p>
+      <p>Summary: YYY</p>
+    </div>-->
+      <!-- Custom HTML footer -->
+      <div class="footer">
+        <span style="font-size:10px;">PROKURA. Powered by CICRA Solutions (PVT) LTD.</span>
+      </div><br />
+    </div>
+  </ng-container>
+
+               <!--Rajitha-->
+  <ng-container *ngIf="show7">
+    <div id="section-to-print" style="background-color:white" *ngIf="POReport">
+
+
+
+
+
+
+
+
+
+      <div class="footer">
+        <span style="font-size:10px;">PROKURA. Powered by CICRA Solutions (PVT) LTD.</span>
+      </div><br />
+    </div>
+  </ng-container>
+             <!--end-->
+</body>

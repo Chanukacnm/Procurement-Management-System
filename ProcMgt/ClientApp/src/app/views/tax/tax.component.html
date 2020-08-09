@@ -1,0 +1,102 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Tax</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Tax Code</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="txtTaxCode" name="taxCode" #taxCode="ngModel" [(ngModel)]="objTax.taxCode" placeholder="Tax Code" required>
+                      <!--<small [hidden]="taxCode.valid || taxCode.required"
+           class="text-danger">
+      Tax Code is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Tax Name</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="txtTaxName" name="taxname" #taxname="ngModel" [(ngModel)]="objTax.taxName" placeholder=" TaxName" required>
+                      <!--<small [hidden]="taxname.valid || taxname.required"
+           class="text-danger">
+      Tax Name is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Percentage</label>
+                    <div class="col-md-7">
+                      <input type="number" class="form-control" id="txtPercentage" name="percentage" #percentage="ngModel" [(ngModel)]="objTax.percentage" placeholder="Percentage" required>
+                      <!--<small [hidden]="percentage.valid || percentage.required"
+           class="text-danger">
+      Percentage is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px; " class="btn btn-danger" (click)="reset()">Reset</button>
+                      <ng-container *ngIf="show">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveTax()">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveTax()">Update</button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <!--<div class="form-group row">
+                    <label class="col-md-2 col-form-label">Search</label>
+                    <div class="col-7">
+                      <input type="text" class="form-control" id="txtSearch" value={{objTax.taxName}} placeholder="Search">
+                    </div>
+                    <div class="col-3">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-outline-dark" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <ag-grid-angular style="width: 100%; height: 230px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="rowData"
+                                     [columnDefs]="columnDefs"
+                                     [rowSelection]="rowSelection"
+                                     [enableSorting]="true"
+                                     [paginationPageSize]="5"
+                                     [pagination]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady($event)">
+                                  
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

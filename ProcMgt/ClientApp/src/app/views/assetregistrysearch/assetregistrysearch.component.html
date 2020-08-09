@@ -1,0 +1,81 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Asset Registry Search</strong>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Item Category</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemCategory">
+                <option *ngFor="let itmCat of lstcategory" value={{itmCat.itemCategoryID}}>{{itmCat.itemCategoryName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Item Type</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemType">
+                <option *ngFor="let itmTyp of lstType" value={{itmTyp.itemTypeID}}>{{itmTyp.itemTypeName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Make</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemType">
+                <option *ngFor="let make of lstMake" value={{make.makeID}}>{{make.makeName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Model</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemType">
+                <option *ngFor="let model of lstModel" value={{model.modelID}}>{{model.modelCode}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Department</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemType">
+                <option *ngFor="let dep of lstDepartment" value={{dep.departmentID}}>{{dep.departmentName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Asset Code</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemType">
+                <option *ngFor="let asstCode of lstAssetCode" value={{asstCode.assetCodeID}}>{{asstCode.assetCodeName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Status</label>
+            <div class="col-md-5">
+              <select class="form-control" id="drpItemType">
+                <option *ngFor="let status of lstStatus" value={{status.statusID}}>{{status.statusName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="card">
+              <ag-grid-angular style="width: 100%; height: 150px;"
+                               class="ag-theme-balham"
+                               [rowData]="rowData"
+                               [columnDefs]="columnDefs">
+              </ag-grid-angular>
+            </div>
+
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>

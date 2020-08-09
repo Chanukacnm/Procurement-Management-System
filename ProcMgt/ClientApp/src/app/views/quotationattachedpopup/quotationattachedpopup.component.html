@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Quotation Enter - Comment</strong>
+    <button type="button" class="close" style="padding:4px 10px;" (click)="onReject()" aria-label="Close">
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="form-group row">
+      <label class="col-md-6 col-form-label">Comment</label>
+      <input type="text" class="form-control" style="margin:15px;" id="txtComment" placeholder="Comment">
+    </div>
+    <div class="form-group row">
+      <label class="col-md-6 col-form-label">Attache</label>
+      <div class="col-md-9">
+        <input type="file" name="pic" accept="image/*">
+      </div>
+    </div>
+    <div class="form-group row">
+    </div>
+  </div>
+  <div class="card-footer">
+      <div class="col-12">
+        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="onClikSave()">Save</button>
+        <button type="reset" style="padding:6px 40px; margin-right:10px;" class="btn btn-danger float-right" (click)="onClickreset()">Reset</button>
+    </div>
+  </div>
+</div>
+

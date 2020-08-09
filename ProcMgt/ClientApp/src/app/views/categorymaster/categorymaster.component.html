@@ -1,0 +1,94 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Category Master</strong>
+        </div>
+        <div class="card-body">          
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label">Category Name</label>
+                      <div class="col-md-7">
+                        <input type="text" class="form-control" id="txtname" name="categoryName" #categoryName="ngModel" [(ngModel)]="objCategoryMaster.categoryName" placeholder="Category Name" [readonly]="isDisable" required>
+                        <!--<small [hidden]="categoryName.valid || categoryName.required"
+           class="text-danger">
+      Name is required
+    </small>-->
+                      </div>
+                      <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label">Category Code</label>
+                      <div class="col-md-7">
+                        <input type="text" class="form-control" id="txtCatCode" name="categoryCode" #categoryCode="ngModel" [(ngModel)]="objCategoryMaster.categoryCode" placeholder="Category Code" [readonly]="isEditMode" required>
+                        <!--<small [hidden]="categoryCode.valid || categoryCode.required"
+           class="text-danger">
+      Category code is required
+    </small>-->
+                      </div>
+                      <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label">Is Active</label>
+                      <div class="col-md-8">
+                        <input [(ngModel)]="objCategoryMaster.isActive" style="margin-top:12px;" type="checkbox" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-12">
+                        <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                        <button type="reset" style="padding:6px 40px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                        <ng-container *ngIf="show">
+                          <button type="button" style="padding:6px 40px;" class="btn btn-success float-right"  (click)="SaveCategoryMaster()">Save</button>
+                        </ng-container>
+                        <ng-container *ngIf="show2">
+                          <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveCategoryMaster()">Update</button>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <!--<div class="form-group row">
+                    <label class="col-md-3 col-form-label">Search</label>
+                    <div class="col-9">
+                      <input type="text" class="form-control" id="txtSearch"  placeholder="Search">
+                    </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <ag-grid-angular style="width: 100%; height: 230px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="rowData"
+                                     [columnDefs]="columnDefs"
+                                     [rowSelection]="single"
+                                     [enableSorting]="true"
+                                     [enableFilter]="true"
+                                     [paginationPageSize]="10"
+                                     [pagination]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [showToolPanel]="true"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

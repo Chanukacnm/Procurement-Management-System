@@ -1,0 +1,130 @@
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Item</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Item Type</label>
+                    <div class="col-md-7">
+                      <select class="form-control" id="drpitemtype" name="itmType" #itmType="ngModel" [(ngModel)]="objItem.itemTypeID" (ngModelChange)="ItemTypeChanged($event)" [disabled]="isEditMode" required>
+                        <option *ngFor="let itemType of lstItemType" value={{itemType.itemTypeID}}>{{itemType.itemTypeName}}</option>
+                      </select>
+                      <!--<small [hidden]="itmType.valid || itmType.required"
+                             class="text-danger">
+                        Item Type is required
+                      </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:115%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Item Description</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="itemDescription" name="itmDesc" #itmDesc="ngModel" [(ngModel)]="objItem.itemDescription" placeholder="Item Description" [readonly]="isDisable" required>
+                      <!--<small [hidden]="itmType.valid || itmType.required"
+                             class="text-danger">
+                        Item Description is required
+                      </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <ng-container *ngIf="show3">
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label">Initial Quantity</label>
+                      <div class="col-md-7">
+                        <input type="number" class="form-control" id="initialQty" name="iniQty" #iniQty="ngModel" [(ngModel)]="objItem.initialQty" placeholder="Initial Qty" required>
+                        <!--<small [hidden]="iniQty.valid || iniQty.required"
+                               class="text-danger">
+                          Initial Quantity is required
+                        </small>-->
+                      </div>
+                      <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    </div>
+                  </ng-container>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Item Code</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="itemCode" name="itmCode" #itmCode="ngModel" [(ngModel)]="objItem.itemCode"  placeholder="Item Code" [readonly]="isEditMode"  required>
+                      <!--<small [hidden]="itmCode.valid || itmCode.required"
+                             class="text-danger">
+                        Item Code is required
+                      </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">ReOrder Quantity</label>
+                    <div class="col-md-7">
+                      <input type="number" class="form-control" id="reorderqty" [(ngModel)]="objItem.reOrderQuantity" placeholder="ReOrder Quantity">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Is Active</label>
+                    <div class="col-md-7">
+                      <input [(ngModel)]="objItem.isActive" style="margin-top:12px;" type="checkbox" />
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px; " class="btn btn-danger" (click)="reset()">Reset</button>
+                      <ng-container *ngIf="show">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveItem()">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveItem()">Update</button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <!--<div class="form-group row">
+                    <label class="col-md-2 col-form-label">Search</label>
+                    <div class="col-7">
+                      <input type="text" class="form-control" id="txtSearch" value={{objItem.name}} placeholder="Search">
+                    </div>
+                    <div class="col-3">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-outline-dark" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <ag-grid-angular style="width: 100%; height: 380px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="rowData"
+                                     [columnDefs]="columnDefs"
+                                     [rowSelection]="single"
+                                     [enableSorting]="true"
+                                     [enableFilter]="true"
+                                     [paginationPageSize]="10"
+                                     [pagination]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

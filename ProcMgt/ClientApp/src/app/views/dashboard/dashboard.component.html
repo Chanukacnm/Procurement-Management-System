@@ -1,0 +1,215 @@
+<mat-tab-group>
+  <mat-tab label="Admin">
+
+
+
+
+  </mat-tab>
+
+
+
+
+  <mat-tab label="User">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <h5 style="margin-left:40%;">Number of Item Requests</h5>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <div class="card text-white " style="width:200px; height:150px; background-color:#ffa31a;">
+                        <div class="card-body">
+                          <div class="text-value" style="margin-left:34%; margin-top:10%;">Total</div>
+                          <div style="margin-left:43%;">10</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-9">
+                      <div class="row">
+                        <div class="card text-white " style="width:200px; height:120px; background-color:#ff6699;">
+                          <div class="card-body">
+                            <div class="text-value" style="margin-left:28%; margin-top:10%;  font-size:15px;">Stationary</div>
+                            <div style="margin-left:43%;">8</div>
+                          </div>
+                        </div>
+                        <div class="card text-white " style="width:200px; height:120px; margin-left:40px; background-color:#4da6ff;">
+                          <div class="card-body">
+                            <div class="text-value" style="margin-left:26%; margin-top:10%;  font-size:15px;">It Hardware</div>
+                            <div style="margin-left:43%;">2</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <h5 style="margin-left:40%;">Request Registry</h5>
+                  </div>
+                  <br><br>
+                      <div class="row">
+                        <!--<div class="col-sm-6 col-lg-3" >
+    <div class="card text-white bg-primary" style="height:150px;">
+      <div class="card-body pb-0">
+        <div class="text-value">5</div>
+        <div>Total Requested</div>
+      </div>
+    </div>
+  </div>-->
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="card text-white bg-success" style="height:150px;">
+                            <div class="card-body pb-0">
+                              <div class="text-value" style="margin-left:22%; margin-top:15%;  font-size:15px;">Total Approved</div>
+                              <div style="margin-left:43%;">5</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="card text-white bg-danger" style="height:150px;">
+                            <div class="card-body pb-0">
+                              <div class="btn-group float-right">
+                              </div>
+                              <div class="text-value" style="margin-left:22%; margin-top:15%;  font-size:15px;">Total Rejected</div>
+                              <div style="margin-left:43%;">4</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="card text-white bg-warning" style="height:150px;">
+                            <div class="card-body pb-0">
+                              <div class="text-value" style="margin-left:22%; margin-top:15%;  font-size:15px;">Total Pending</div>
+                              <div style="margin-left:43%;">1</div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-primary">
+          <div class="card-body pb-0">
+            <button type="button" class="btn btn-transparent p-0 float-right">
+              <i class="icon-location-pin"></i>
+            </button>
+            <div class="text-value">565</div>
+            <div>Total Requested</div>
+          </div>
+          <div class="chart-wrapper mt-3 " style="height:70px;">
+            <canvas baseChart class="chart"
+                    [datasets]="lineChart2Data"
+                    [labels]="lineChart3Labels"
+                    [options]="lineChart3Options"
+                    [colors]="lineChart3Colours"
+                    [legend]="lineChart3Legend"
+                    [chartType]="lineChart3Type"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-warning">
+          <div class="card-body pb-0">
+            <div class="btn-group float-right" dropdown>
+              <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+                <i class="icon-settings"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+
+              </div>
+            </div>
+            <div class="text-value">184</div>
+            <div>Total Pending</div>
+          </div>
+          <div class="chart-wrapper mt-3 " style="height:70px;">
+            <canvas baseChart class="chart"
+                    [datasets]="lineChart1Data"
+                    [labels]="lineChart3Labels"
+                    [options]="lineChart3Options"
+                    [colors]="lineChart3Colours"
+                    [legend]="lineChart3Legend"
+                    [chartType]="lineChart3Type"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-success">
+          <div class="card-body pb-0">
+            <div class="btn-group float-right" dropdown>
+              <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+                <i class="icon-settings"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+            <div class="text-value">268</div>
+            <div>Total Approved</div>
+          </div>
+          <div class="chart-wrapper mt-3" style="height:70px;">
+            <canvas baseChart class="chart"
+                    [datasets]="lineChart3Data"
+                    [labels]="lineChart3Labels"
+                    [options]="lineChart3Options"
+                    [colors]="lineChart3Colours"
+                    [legend]="lineChart3Legend"
+                    [chartType]="lineChart3Type"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-danger">
+          <div class="card-body pb-0">
+            <div class="btn-group float-right" dropdown>
+              <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+                <i class="icon-settings"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+            <div class="text-value">113</div>
+            <div>Total Rejected</div>
+          </div>
+          <div class="chart-wrapper mt-3 mx-1" style="height:70px;">
+            <canvas baseChart class="chart"
+                    [datasets]="lineChart2Data"
+                    [labels]="lineChart3Labels"
+                    [options]="lineChart3Options"
+                    [colors]="lineChart3Colours"
+                    [legend]="lineChart3Legend"
+                    [chartType]="lineChart3Type"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

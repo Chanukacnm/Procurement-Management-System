@@ -1,0 +1,122 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>ARN (Asset Receive Note)</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-sm-12">
+                    <!--<div class="form-group row">
+                      <label class="col-md-2 col-form-label">Search</label>
+                      <div class="col-7">
+                        <input type="text" class="form-control" id="txtSearch"  placeholder="Search">
+                      </div>
+                      <div class="col-3">
+                        <button type="button" style="padding:6px 70px;" class="btn btn-outline-dark float-right" (click)="onSearch()">Search</button>
+                      </div>
+                    </div>-->
+                    <div class="form-group row">
+                      <b>Purcheseorder List</b>
+                      <ag-grid-angular style="width: 100%; height: 180px;"
+                                       class="ag-theme-balham"
+                                       [rowData]="PurchaseOrderrowData"
+                                       [columnDefs]="PurchaseOrderColumnDefs"
+                                       [rowSelection]="rowSelection"
+                                       [enableSorting]="true"
+                                       [enableColResize]="true"
+                                       [paginationPageSize]="5"
+                                       [context]="context"
+                                       [suppressRowClickSelection]="true"
+                                       (gridReady)="onGridReadyPOList($event)"
+                                       [frameworkComponents]="frameworkComponents">
+                      </ag-grid-angular>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <ng-container *ngIf="show">
+                <div class="card">
+                  <div class="card-body">
+                    <!------------Cmd By Nipuna Francisku--> 
+                    <!--<div class="form-group row"> 
+                      <label class="col-md-2 col-form-label">ARN No</label>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control" id="txtName" [(ngModel)]="objARNHeader.arnnumber"  placeholder="ARN No">
+                      </div>
+                    </div>-->
+                    <div class="form-group row">
+                      <label class="col-md-2 col-form-label">PO No</label>
+                      <div class="col-md-4">
+                        <input disabled type="text" class="form-control" id="txtponumber" [(ngModel)]="ponumber"  placeholder="PO No">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-2 col-form-label" for="date-input">Recived Date</label>
+                      <div class="col-md-4">
+                        <input  class="form-control"  type="date" id="txtreciveddate" [(ngModel)]="objARNHeader.recivedDate"  placeholder="Recived Date">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-2 col-form-label">Invoice No</label>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control" id="txtinvoiceno" [(ngModel)]="objARNHeader.invoiceNo" placeholder="Invoice No">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-2 col-form-label">Remark</label>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control" id="txtRemark" [(ngModel)]="objARNHeader.arnremark" placeholder="Remark">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-2 col-form-label">Attachment</label>
+                      <div class="col-md-4">
+                        <input type="file" class="form-control" id="file">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <ag-grid-angular  *ngIf="show" style="width: 100%; height: 150px;"
+                                       class="ag-theme-balham"
+                                       [rowData]="ARNrowData"
+                                       [columnDefs]="ARNcolumnDefs"
+                                       [rowSelection]="rowSelection"
+                                       [enableSorting]="true" [enableColResize]="true"
+                                       [context]="context"
+                                       [paginationPageSize]="5"
+                                       [suppressRowClickSelection]="true"
+                                       [frameworkComponents]="frameworkComponents"
+                                      
+                                       (gridReady)="onGridReadyARNDetailsList($event)">
+                      </ag-grid-angular>
+
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <ng-container *ngIf="show">
+                      <div class="row">
+                        <div class="col-12">
+                          <button type="reset" style="padding:6px 40px; margin-left:10px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                          <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveArnEntry()">Save</button>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

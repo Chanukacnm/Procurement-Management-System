@@ -1,0 +1,289 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>User Account</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card">
+                    <div class="card-body">
+                      <!--<div class="form-group row">
+        <label class="col-md-2 col-form-label">Search</label>
+        <div class="col-7">
+          <input type="text" class="form-control" id="txtSearch" value={{objUserAccount.name}} placeholder="Search">
+        </div>
+        <div class="col-3">
+          <button type="button" style="padding:6px 70px;" class="btn btn-outline-dark float-right" (click)="onSearch()">Search</button>
+        </div>
+      </div>-->
+                      <div class="form-group row">
+                        <ag-grid-angular style="width: 100%; height: 380px;"
+                                         class="ag-theme-balham"
+                                         [rowData]="rowData"
+                                         [columnDefs]="columnDefs"
+                                         [rowSelection]="rowSelection"
+                                         [enableSorting]="true"
+                                         [enableColResize]="true"
+                                         [paginationPageSize]="10"
+                                         [pagination]="true"
+                                         [context]="context"
+                                         [frameworkComponents]="frameworkComponents"
+                                         (gridReady)="onGridReady($event)">
+                        </ag-grid-angular>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Name</label>
+                        <div class="col-md-5">
+                          <input type="text" class="form-control" id="txtName" [(ngModel)]="objUserAccount.name" placeholder="Name" [readonly]="isDisable" required>
+                          <!--<small [hidden]="name.valid || name.required"
+                                  [class.is-invalid]="name.invalid && name.touched"
+             class="text-danger">
+        Name is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Employee No</label>
+                        <div class="col-md-5">
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="txtEmployeeId" name="empNo" [(ngModel)]="objUserAccount.employeeNo" placeholder="Employee No" [readonly]="isDisable" required>
+                            <!--<button class="btn btn-outline-secondary" type="button">?</button>-->
+                          </div>
+                          <!--<small [hidden]="empNo.valid || empNo.required"
+             class="text-danger">
+        Employee No is required
+      </small>-->
+                        </div>
+                        <!--<label class="text-danger" style="zoom:120%;"><b>*</b></label>-->
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Company</label>
+                        <div class="col-md-5">
+                          <select class="form-control" id="drpCompany" name="company" [(ngModel)]="objUserAccount.companyID" (ngModelChange)="CompanyChanged($event)" required>
+                            <option *ngFor="let usrComp of lstCompany" value={{usrComp.companyID}}>{{usrComp.companyName}}</option>
+                          </select>
+                          <!--<small [hidden]="company.valid || company.required"
+             class="text-danger">
+        Company is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Department</label>
+                        <div class="col-md-5">
+                          <select class="form-control" id="drpDepartment" name="department" [(ngModel)]="objUserAccount.departmentID" (ngModelChange)="DepartmentChanged($event)" required>
+                            <option *ngFor="let usrDep of lstDepartment" value={{usrDep.departmentID}}>{{usrDep.departmentName}}</option>
+                          </select>
+                          <!--<small [hidden]="department.valid || department.required"
+             class="text-danger">
+        Department is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">E-mail</label>
+                        <div class="col-md-5">
+                          <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="objUserAccount.email" placeholder="E-mail" [class.is-invalid]="email.invalid && email.touched" pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                          <!--<small [hidden]="email.valid || email.required"
+             class="text-danger">
+        E-mail is required
+      </small>-->
+                          <div *ngIf="email.errors && (email.invalid || email.touched)">
+                            <small class="text-danger" *ngIf="email.errors.pattern">Please provide a valid email address</small>
+                          </div>
+
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Designation</label>
+                        <div class="col-md-5">
+                          <select class="form-control" id="drpDesignation" name="designation" [(ngModel)]="objUserAccount.designationID" (ngModelChange)="DesignationChanged($event)" required>
+                            <option *ngFor="let usrdesg of lstDesignation" value={{usrdesg.designationID}}>{{usrdesg.designationName}}</option>
+                          </select>
+                          <!--<small [hidden]="designation.valid || designation.required"
+             class="text-danger">
+        Designation is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">User Role</label>
+                        <div class="col-md-5">
+                          <select class="form-control" id="drpUserRole" name="userRole" [(ngModel)]="objUserAccount.userRoleID" (ngModelChange)="UserRoleChanged($event)" required>
+                            <option *ngFor="let usrrole of lstRole" value={{usrrole.userRoleID}}>{{usrrole.userRoleName}}</option>
+                          </select>
+                          <!--<small [hidden]="userRole.valid || userRole.required"
+             class="text-danger">
+        User Role is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Is Active</label>
+                        <div class="col-md-8">
+                          <input [(ngModel)]="objUserAccount.isActive" style="margin-top:12px;" type="checkbox" />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">User Name</label>
+                        <div class="col-md-5">
+                          <input type="text" name="username" #username="ngModel" class="form-control" id="txtUserName" [(ngModel)]="objUserAccount.userName" placeholder="User Name" required minlength="5" maxlength="100">
+                          <!--<small [hidden]="username.valid || username.required  " class="text-danger">
+        Username is required (minimum 5 characters).
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+
+
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Password</label>
+                        <div class="col-md-5">
+                          <input type="password" class="form-control" id="password" name="password" #password="ngModel" [(ngModel)]="objUserAccount.password" placeholder="Password" required minlength="8" maxlength="50">
+                          <!--<small [hidden]="password.valid || password.required " class="text-danger">
+        Password is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+
+
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Is Approval User</label>
+                        <div class="col-md-3">
+                          <input style="margin-top:12px;"  [(ngModel)]="this.objUserAccount.isApprovalUser" (ngModelChange)="isClicked($event)"  type="checkbox"  disabled/>
+                        </div>
+                      </div>
+
+
+                      <!--<div class="form-group row">
+    <label class="col-md-2 col-form-label">Confirm Password</label>
+    <div class="col-md-5">
+      <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" name="confirmPassword" reverse="false"  validateEqual="password" #confirmPassword="ngModel" required>
+      <small [hidden]="confirmPassword.valid || (confirmPassword.pristine)" class="text-danger">
+        Password mismatch
+      </small>
+    </div>
+  </div>-->
+                    </div>
+                  </div>
+                  <div class="card" >
+                    <div class="card-body">
+                      <label class="text" ><b><i>Assign Designation for Approval Purpose</i></b></label>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Designation</label>
+                        <div class="col-md-5">
+                          <select class="form-control" id="drpDesignation" name="designation" [disabled]="!isApprovalUser" [(ngModel)]="objUserAccount.apprDesignationID" (ngModelChange)="ApprDesignationChanged($event)" >
+                            <option *ngFor="let apprusrdesg of lstApprDesignation" value={{apprusrdesg.designationID}}>{{apprusrdesg.designationName}}</option>
+                          </select>
+                          <!--<small [hidden]="designation.valid || designation.required"
+             class="text-danger">
+        Designation is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Designation Level</label>
+                        <!--<div class="row">-->
+                        <div class="col-md-3">
+                          <select class="form-control" id="drpDesignation" [disabled]="!isApprovalUser" name="designationLevel" [(ngModel)]="objUserAccount.businessUnitTypeID" (ngModelChange)="DesignationLevelChanged($event)">
+                            <option *ngFor="let usrdesgLevel of lstDesignationLevel" value={{usrdesgLevel.businessUnitTypeID}}>{{usrdesgLevel.businessUnitTypeName}}</option>
+                          </select>
+
+                          <!--<small [hidden]="designation.valid || designation.required"
+           class="text-danger">
+      Designation is required
+    </small>-->
+                        </div>
+                        <div class="col-md-3">
+                          <select id="multiple-select" name="multiple-select" [disabled]="!isApprovalUser" class="form-control" size="5" [(ngModel)]="objUserAccount.businessUnitsID" (ngModelChange)="BusinessUnitsChanged($event)" multiple>
+                            <option *ngFor="let busUnits of lstBusinessUnits" value={{busUnits.businessUnitsID}}>{{busUnits.businessUnitsName}}</option>
+                          </select>
+
+                        </div>
+
+                        <!--<div id="multiselect-sample" class="control-section">
+                          <div class="col-lg-8 content-wrapper">
+                            <div class="control-styles">
+                              <h4>CheckBox</h4>
+                              <ejs-multiselect id='multiselect-checkbox' #checkbox  
+                                               showSelectAll='true' ></ejs-multiselect>
+                            </div>
+                          </div>
+                        </div>-->
+
+                        </div>
+                        <div class="form-group row">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <div class="col-11 ">
+                            <button type="button" style="padding:6px 60px;" [disabled]="!isApprovalUser" class="btn btn-primary float-right" (click)="AddGroupOfCompanies()">ADD</button>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="form-group row">
+                                <ag-grid-angular style="width: 100%; height: 250px;"
+                                                 class="ag-theme-balham"
+                                                 [rowData]="rowData2"
+                                                 [columnDefs]="columnDefs2"
+                                                 [rowSelection]="single"
+                                                 [enableSorting]="true"
+                                                 [enableFilter]="true"
+                                                 [paginationPageSize]="5"
+                                                 [pagination]="true"
+                                                 [enableColResize]="true"
+                                                 [context]="context"
+                                                 [showToolPanel]="true"
+                                                 [frameworkComponents]="frameworkComponents"
+                                                 (gridReady)="onGridReady2($event)">
+                                </ag-grid-angular>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <button type="reset" style="padding:6px 40px; " class="btn btn-danger" (click)="reset()">Reset</button>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveUserAccount()">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show3">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveUserAccount()">Update</button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

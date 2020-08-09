@@ -1,0 +1,194 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Item Request</strong>
+          <!--<ng-container *ngIf="show">-->
+          <!--<button type="button" class="close" style="padding:4px 10px;" (click)="onReject()" aria-label="Close">
+      <span aria-hidden="true">X</span>
+    </button>-->
+          <!--</ng-container>-->
+
+        </div>
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Request Title</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" id="txtRequestTitle" maxlength="100" [(ngModel)]="objPurchaseRequest.requestTitle" placeholder="Enter Request Title">
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Item Category</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpcategory" [(ngModel)]="objPurchaseRequest.categoryID" (ngModelChange)="CategoryChanged($event)">
+                        <option *ngFor="let category of lstCategory" value={{category.categoryID}}>{{category.categoryName}}</option>
+                      </select>
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <label class="col-md-2 col-form-label">Item Type</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpitemtype" [(ngModel)]="objPurchaseRequest.itemTypeID" (ngModelChange)="ItemTypeChanged($event)">
+                        <option *ngFor="let itmType of lstItemType" value={{itmType.itemTypeID}}>{{itmType.itemTypeName}}</option>
+                      </select>
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Item Description</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpitemdescription" [(ngModel)]="objPurchaseRequest.itemID" (ngModelChange)="ItemDescriptionChanged($event)">
+                        <option *ngFor="let item of lstItem" value={{item.itemID}}>{{item.itemDescription}}</option>
+                      </select>
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <label class="col-md-2 col-form-label">Item Make</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpitemmake" [(ngModel)]="objPurchaseRequest.makeID" (ngModelChange)="MakeChanged($event)">
+                        <option *ngFor="let itmMake of lstMake" value={{itmMake.makeID}}>{{itmMake.makeName}}</option>
+                      </select>
+                    </div>
+
+
+                  </div>
+                  <div class="form-group row">
+
+                    <label class="col-md-2 col-form-label">Item Model</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drpitemmodel" [(ngModel)]="objPurchaseRequest.modelID" (ngModelChange)="ModelChanged($event)">
+                        <option *ngFor="let itmModel of lstModel" value={{itmModel.modelID}}>{{itmModel.modelName}}</option>
+                      </select>
+                    </div>
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label">Priority</label>
+                    <div class="col-md-3">
+                      <select class="form-control" id="drppriority" [(ngModel)]="objPurchaseRequest.priorityID" (ngModelChange)="PriorityChanged($event)">
+                        <option *ngFor="let priority of lstPriority" value={{priority.priorityID}}>{{priority.priorityLevelName}}</option>
+                      </select>
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+
+                    <!--<label class="col-md-2 col-form-label" for="date-input">Required Date</label>
+  <div class="col-md-4">
+    <input class="form-control" id="dtrequireddate" type="date" name="required-date" [(ngModel)]="objPurchaseRequest.requiredDate">
+  </div>-->
+
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="date-input">Requested Date</label>
+                    <div class="col-md-3">
+                      <input disabled class="form-control" id="dtrequesteddate" type="datetime" name="requested-date" [(ngModel)]="objPurchaseRequest.requestedDateTime">
+                    </div>
+                    <label class="text-danger" style="zoom:120%;">&nbsp;&nbsp;</label>
+                    <label class="col-md-2 col-form-label" for="date-input">Required Date</label>
+                    <div class="col-md-3">
+                      <input class="form-control" id="dtrequireddate" type="date" name="required-date" [(ngModel)]="objPurchaseRequest.requiredDate">
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2   col-form-label">Is Replacement</label>
+                    <div class="col-md-4">
+                      <input [(ngModel)]="objPurchaseRequest.isReplaceble" style="margin-top:12px;" type="checkbox" />
+                    </div>
+                    <!--<label class="col-md-2 col-form-label">Asset Code</label>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="txtassetcode" [(ngModel)]="objPurchaseRequest.assetCode" placeholder="Asset Code">
+
+                      </div>
+
+                    </div>-->
+                  </div>
+                  <div class="form-group row">
+
+                    <label class="col-md-2 col-form-label">No. of Units</label>
+                    <div class="col-md-3">
+                      <input type="number" class="form-control" id="txtnoofunits" [(ngModel)]="objPurchaseRequest.noOfUnits" placeholder="Units">
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                    <!--<label class="col-md-2 col-form-label">Approver</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpapprover" [(ngModel)]="objPurchaseRequest.approverID " (ngModelChange)="ApproverChanged($event)">
+                        <option *ngFor="let approver of lstApprover" value={{approver.approverID}}>{{approver.approverName}}</option>
+                      </select>
+                    </div>-->
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="remarks">Remark</label>
+                    <div class="col-md-4">
+                      <textarea id="txtRemarks" name="remarks" rows="5" class="form-control" [(ngModel)]="objPurchaseRequest.remark" placeholder="Remarks"></textarea>
+                    </div>
+                    <label class="col-md-2 col-form-label" for="remarks">Attachement</label>
+                    <div class="col-md-3">
+                      <input type="file" name="myFile">
+                    </div>
+                    <!--<div class="col-2 ">
+      <button type="button" style="padding:6px 30px;" class="btn btn-primary float-right" (click)="onAdd()">ADD</button>
+    </div>-->
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px; " class="btn btn-danger" (click)="reset()">Reset</button>
+                      <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SavePurchaseRequest()">Request</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-sm-12">
+                    <!--<div class="form-group row">
+    <div class="col-md-12">
+      <b>Item Request Details</b>
+    </div>
+
+
+    <div class="col-12">
+      <button type="button" style="padding:6px 70px;" class="btn btn-outline-dark float-right" (click)="onSearch()">Search</button>
+    </div>
+  </div>-->
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <b>Item Request Details</b>
+                      </div>
+                    </div>
+                      <div class="form-group row">
+                        <ag-grid-angular style="width: 100%; height: 380px;"
+                                         class="ag-theme-balham"
+                                         [rowData]="rowData"
+                                         [columnDefs]="columnDefs"
+                                         [rowSelection]="rowSelection"
+                                         [enableSorting]="true"
+                                         [paginationPageSize]="10"
+                                         [pagination]="true"
+                                         [enableColResize]="true"
+                                         [context]="context"
+                                         [frameworkComponents]="frameworkComponents"
+                                         (gridReady)="onGridReady($event)">
+                        </ag-grid-angular>
+                      </div>
+
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

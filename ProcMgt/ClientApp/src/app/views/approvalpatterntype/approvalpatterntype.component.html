@@ -1,0 +1,95 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Approval Pattern type</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Pattern Name</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="txtname" name="patternName" #patternName="ngModel" [(ngModel)]="objApprovalPatternType.patternName" placeholder="Pattern Name" required>
+                      <!--<small [hidden]="patternName.valid || patternName.required"
+           class="text-danger">
+      Pattern Name is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Pattern Code</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="txtcode" name="code" #code="ngModel" [(ngModel)]="objApprovalPatternType.code" placeholder="Code Name" required>
+                      <!--<small [hidden]="code.valid || code.required"
+           class="text-danger">
+      Code is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Is Active</label>
+                    <div class="col-md-8">
+                      <input [(ngModel)]="objApprovalPatternType.isActive" style="margin-top:12px;" type="checkbox" />
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px; " class="btn btn-danger" (click)="reset()">Reset</button>
+                      <ng-container *ngIf="show">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveApprovalPatternType()">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveApprovalPatternType()">Update</button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <!--<div class="form-group row">
+                    <label class="col-md-2 col-form-label">Search</label>
+                    <div class="col-7">
+                      <input type="text" class="form-control" id="txtSearch" value={{objApprovalPatternType.patternName}} placeholder="Search">
+                    </div>
+                    <div class="col-3">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-outline-dark" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <ag-grid-angular style="width: 100%; height: 230px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="rowData"
+                                     [columnDefs]="columnDefs"
+                                     [rowSelection]="single"
+                                     [enableSorting]="true"
+                                     [enableColResize]="true"
+                                     [paginationPageSize]="10"
+                                     [pagination]="true"
+                                     [context]="context"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

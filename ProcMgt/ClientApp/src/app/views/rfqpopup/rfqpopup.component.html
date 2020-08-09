@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Comment</strong>
+    <button type="button" class="close" style="padding:4px 10px;" (click)="onReject()" aria-label="Close">
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="form-group row">
+      <div class="col-md-12">
+        <!--<input type="text" class="form-control" id="txtComment" placeholder="Comment">-->
+        <textarea id="txtComment" name="Comment" rows="4" class="form-control" placeholder="Comment"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12 ">
+        <button type="button" style="padding:6px 50px; " class="btn btn-success float-right" (click)="onReject()">Print</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

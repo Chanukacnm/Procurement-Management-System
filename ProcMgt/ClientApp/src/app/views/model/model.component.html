@@ -1,0 +1,224 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Model</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-sm-12">
+                    <!--<div class="form-group row">
+                      <label class="col-md-2 col-form-label">Search</label>
+                      <div class="col-7">
+                        <input type="text" class="form-control" id="txtSearch" value={{objModel.modelName}} placeholder="Search">
+                      </div>
+                      <div class="col-3">
+                        <button type="button" style="padding:6px 70px;" class="btn btn-outline-dark float-right" (click)="onSearch()">Search</button>
+                      </div>
+                    </div>-->
+                    <div class="form-group row">
+                      <ag-grid-angular style="width: 100%; height: 230px;"
+                                       class="ag-theme-balham"
+                                       [rowData]="rowData"
+                                       [columnDefs]="columnDefs"
+                                       [rowSelection]="rowSelection"
+                                       [enableSorting]="true"
+                                       [enableColResize]="true"
+                                       [paginationPageSize]= "5"
+                                       [pagination]="true"
+                                       [context]="context"
+                                       [frameworkComponents]="frameworkComponents"
+                                       (gridReady)="onGridReady($event)">
+                      </ag-grid-angular>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body"> 
+                  <div class="form-group row">
+                    <div class="col-sm-6">
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Item Type</label>
+                        <div class="col-md-7">
+                          <select class="form-control" id="drpItmType" name="itemType" #itemType="ngModel" [(ngModel)]="objModel.itemTypeID" (ngModelChange)="ItemTypeChanged($event)" [disabled]="isEditMode"  required>
+                            <option *ngFor="let itmType of lstItem" value={{itmType.itemTypeID}}>{{itmType.itemTypeName}}</option>
+                          </select>
+                          <!--<small [hidden]="itemType.valid || itemType.required"
+             class="text-danger">
+        Item Type is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Make</label>
+                        <div class="col-md-7">
+                          <select class="form-control" id="drpMake" name="make" #make="ngModel" [(ngModel)]="objModel.makeID" (ngModelChange)="MakeChanged($event)" [disabled]="isDisable" required>
+                            <option *ngFor="let make of lstMake" value={{make.makeID}}>{{make.makeName}}</option>
+                          </select>
+                          <!--<small [hidden]="make.valid || make.required"
+             class="text-danger">
+        Make is required
+      </small>-->
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Model Name</label>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control" id="txtModelName" name="modelName" #modelName="ngModel" [(ngModel)]="objModel.modelName" placeholder="Model Name" [readonly]="isDisable" required>
+         
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Model Code</label>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control" id="txtModelCode" name="modelCode" #modelCode="ngModel" [(ngModel)]="objModel.modelCode" placeholder="Model Code" [readonly]="isEditMode" required>
+           
+                        </div>
+                        <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Is Active</label>
+                        <div class="col-md-8">
+                          <input [(ngModel)]="objModel.isActive" style="margin-top:12px;" type="checkbox" />
+
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Image</label>
+                        <div class="col-md-7">
+                          <!--<input type="file" #file2 placeholder="Choose Image" id="uploadCaptureInputFile" accept="image/*">-->
+                          
+                          <input type="file" #file placeholder="Choose file" id="uploadCaptureInputFile"  accept="image/*">
+                          <!--<button type="button" class="btn btn-danger" style=" background-color: #cc52d6; border: #a633cc;" (click)="file.click()">Upload Image</button>-->
+                        </div>
+                        <div class="col-md-2">
+                          <!--<span class="text-dark" *ngIf="progress > 0">    {{filename}}  </span>-->
+                          <button type="reset" style="padding:1px 5px; background: linear-gradient(to bottom right, #ff0000 0%, #ff6600 100%); border: #a633cc; float:right;" class="btn btn-danger" (click)="resetFile(file.files)"><b>X</b></button>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-12">                          
+                          <img src="{{imagePath}}" style="max-height:100px; max-width:250px;" />
+
+                          <button type="button" class="btn btn-danger" style="float:right;  background-color: #ff7a00;  border: #ff3300;" (click)="uploadFile(file.files)">Upload Image</button>
+                        </div>
+                      </div>
+                      <!--<div class="form-group row">
+                        <div class="col-md-2">
+                          <span class="text-success" *ngIf="progress > 0">
+                            {{progress}}%
+                          </span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <span class="text-success" *ngIf="message">
+                            {{message}}
+                          </span>
+                        </div>
+                      </div>-->
+
+
+                      </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px;" class="btn btn-danger" (click)="reset(file.files)">Reset</button>
+                      <ng-container *ngIf="show">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveModel(file.files)">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveModel(file.files)">Update</button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Model</strong>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Item Type</label>
+            <div class="col-md-4">
+              <select class="form-control" id="drpItmType">
+                <option *ngFor="let itmType of lstItem" value={{itmType.itemTypeID}}>{{itmType.itemTypeName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Make</label>
+            <div class="col-md-4">
+              <select class="form-control" id="drpMake">
+                <option *ngFor="let make of lstMake" value={{make.makeID}}>{{make.makeName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Model Code</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="txtModelCode" value={{objModel.modelCode}} placeholder="Model Code">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Model Name</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="txtModelName" value={{objModel.modelName}} placeholder="Model Name">
+            </div>
+          </div>
+          <div class="form-group row">
+    <label class="col-md-2 col-form-label">Image</label>
+    <div class="col-md-4">
+      <input type="file" name="pic" accept="image/*">
+    </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-6 ">
+        <button type="button" style="padding:6px 30px; float:right;" class="btn btn-primary" (click)="onAdd()">Upload</button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Status</label>
+      <div class="col-md-4">
+        <select class="form-control" id="drpStatus">
+          <option *ngFor="let status of lstStatus" value={{status.statusID}}>{{status.statusName}}</option>
+        </select>
+      </div>
+    </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->

@@ -1,0 +1,95 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Measurement Units</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Name</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="txtName" name="measurementunitName" #measurementunitName="ngModel" [(ngModel)]="objMU.measurementUnitName" placeholder="Measurement Name" [readonly]="isDisable" required>
+                      <!--<small [hidden]="measurementunitName.valid || measurementunitName.required"
+           class="text-danger">
+      Name is required
+    </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Code</label>
+                    <div class="col-md-7">
+                      <input type="text" class="form-control" id="code" name="measurementCode" #measurementCode="ngModel" [(ngModel)]="objMU.code" placeholder=" Measurement Code" [readonly]="isEditMode" required>
+                      <!--<small [hidden]="measurementCode.valid || measurementCode.required"
+                             class="text-danger">
+                        Measurement Unit code is required
+                      </small>-->
+                    </div>
+                    <label class="text-danger" style="zoom:120%;"><b>*</b></label>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label">Is Active</label>
+                    <div class="col-md-8">
+                      <input [(ngModel)]="objMU.isActive" style="margin-top:12px;" type="checkbox" />
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-12">
+                      <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                      <button type="reset" style="padding:6px 40px; " class="btn btn-danger" (click)="reset()">Reset</button>
+                      <ng-container *ngIf="show">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveMeasurementUnit()">Save</button>
+                      </ng-container>
+                      <ng-container *ngIf="show2">
+                        <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SaveMeasurementUnit()">Update</button>
+                      </ng-container>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <!--<div class="form-group row">
+                    <label class="col-md-2 col-form-label">Search</label>
+                    <div class="col-7">
+                      <input type="text" class="form-control" id="txtSearch" value={{objMU.measurementUnitName}} placeholder="Search">
+                    </div>
+                    <div class="col-3">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-outline-dark" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <ag-grid-angular style="width: 100%; height: 230px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="rowData"
+                                     [columnDefs]="columnDefs"
+                                     [rowSelection]="single"
+                                     [enableSorting]="true"
+                                     [paginationPageSize]="10"
+                                     [pagination]="true"
+                                     [enableColResize]="true"
+                                     [context]="context"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

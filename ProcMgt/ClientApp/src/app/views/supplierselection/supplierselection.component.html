@@ -1,0 +1,57 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Supplier Selection</strong>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+
+            <ag-grid-angular style="width: 100%; height: 200px;"
+                             class="ag-theme-balham"
+                             [rowData]="rowData"
+                             [columnDefs]="columnDefs"
+                             [rowSelection]="rowSelection"
+                             [enableSorting]="true"
+                             [enableColResize]="true"
+                             [context]="context"
+                             [suppressRowClickSelection]="true"
+                             [frameworkComponents]="frameworkComponents"
+                             (gridReady)="onGridReady($event)"
+                             (selectionChanged)="getSelectedRows($event)">
+            </ag-grid-angular>
+
+          </div>
+          <ng-container *ngIf="show">
+            <div class="form-group row">
+              <ag-grid-angular style="width: 100%; height: 200px;"
+                               class="ag-theme-balham"
+                               [rowData]="rowData2"
+                               [columnDefs]="columnDefs2"
+                               [enableSorting]="true"
+                               [enableColResize]="true"
+                               [context]="context"
+                               [suppressRowClickSelection]="true"
+                               [frameworkComponents]="frameworkComponents"
+                               (gridReady)="onGridReady($event)">
+              </ag-grid-angular>
+            </div>
+          </ng-container>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Comment</label>
+              <div class="col-md-6">
+                <!--<input type="text" class="form-control" id="txtComment" placeholder="Comment">-->
+                <textarea id="txtComment" name="Comment" rows="4" class="form-control" placeholder="Comment"></textarea>
+              </div>
+              <div class="col-4 ">
+                <button type="button" style="padding:6px 50px;" class="btn btn-success float-right" (click)="onSave()">Save</button>
+              </div>
+            </div>
+        </div>
+        <div class="card-footer">
+        </div>
+        </div>
+    </div>
+  </div>
+</div>

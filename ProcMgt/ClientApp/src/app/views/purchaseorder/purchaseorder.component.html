@@ -1,0 +1,344 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Purchase Order</strong>
+        </div>
+        <div class="card-body"> 
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <!--<div class="form-group row">
+                    <label class="col-md-2 col-form-label">Request No</label>
+                    <div class="col-6">
+                      <input type="text" class="form-control" id="txtSearch" value={{objPoHeader.pONumber}} placeholder="Search">
+                    </div>
+                    <div class="col-3">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-outline-dark" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <b style="padding:6px 30px;">Quotation List </b>
+                    <ag-grid-angular style="width: 100%; height: 180px;"
+                                     class="ag-theme-balham"
+                                     [rowData]="QuotationListRowData"
+                                     [columnDefs]="QuotationListColumnDefs"
+                                     [rowSelection]="rowSelection"
+                                     [enableSorting]="true"
+                                     [enableColResize]="true"
+                                     [paginationPageSize]="10"
+                                     [context]="context"
+                                     [suppressRowClickSelection]="true"
+                                     [gridOptions]="gridOptions"
+                                     [frameworkComponents]="frameworkComponents"
+                                     (gridReady)="onGridReadyQuotationList($event)"
+                                     (selectionChanged)="getSelectedRows($event)">
+                    </ag-grid-angular>
+                  </div>
+                  <!--<ng-container *ngIf="show">
+                    <div class="form-group row">
+                      <b>Supplier List</b>
+                      <ag-grid-angular style="width: 100%; height: 180px;"
+                                       class="ag-theme-balham"
+                                       [rowData]="rowData2"
+                                       [columnDefs]="columnDefs2"
+                                       [rowSelection]="rowSelection"
+                                       [enableSorting]="true"
+                                       [enableColResize]="true"
+                                       [context]="context"
+                                       [suppressRowClickSelection]="true"
+                                       [frameworkComponents]="frameworkComponents"
+                                       (gridReady)="onGridReady($event)"
+                                       (selectionChanged)="getSelectedRows2($event)">
+                      </ag-grid-angular>
+                    </div>
+                  </ng-container>-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="show">
+            <div class="card">
+              <div class="card-body">
+                <ng-container *ngIf="show">
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Quotation Number</label>
+                    <div class="col-md-4">
+                      <input disabled type="text" class="form-control" id="txtQuotationNumber" [(ngModel)]="quotationNumber" placeholder="Quotation Number">
+                    </div>
+                    <label class="col-md-2 col-form-label">Total PO Amount</label>
+                    <div class="col-md-4">
+                      <input type="number" class="form-control" id="txtTotalPOAmount" [(ngModel)]="objPoHeader.totalPoamount" placeholder="Total PO Amount">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="date-input">Requested Delivery Date</label>
+                    <div class="col-md-4">
+                      <input disabled class="form-control" id="dtrequesteddeliverydate" type="datetime" name="requested-delivery-date" [(ngModel)]="requiredDate">
+                    </div>
+                    <label class="col-md-2 col-form-label" for="date-input"> PO Date Time</label>
+                    <div class="col-md-4">
+                      <input disabled class="form-control" id="dtpodatetime" type="datetime" name="po-date-time" [(ngModel)]="objPoHeader.pODateTime">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="date-input"> Actual Delivery Date</label>
+                    <div class="col-md-4">
+                      <input class="form-control" id="dtactualdeliverydate" type="date" name="actual-delivery-date" [(ngModel)]="objPoHeader.actualDeliveryDate">
+                    </div>
+                    <label class="col-md-2 col-form-label">Payment Method</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpPaymentMethod" [(ngModel)]="objPoHeader.paymentMethodID" (ngModelChange)="PaymentMethodChanged($event)">
+                        <option *ngFor="let paymentMethod of lstPaymentMethod" value={{paymentMethod.paymentMethodID}}>{{paymentMethod.paymentMethodName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Tax Amount</label>
+                    <div class="col-md-4">
+                      <input type="number" class="form-control" id="txtTaxAmount" [(ngModel)]="objPoHeader.taxAmount" placeholder="Tax Amount">
+                    </div>
+                    <label class="col-md-2 col-form-label">PO Number </label>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" id="txtPONumber" [(ngModel)]="objPoHeader.poNumber" placeholder="PO Number">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Is Delivered</label>
+                    <div class="col-md-2 col-form-label">
+                      <input [(ngModel)]="objPoHeader.isDeliver" type="checkbox" />
+                    </div>
+                  </div>
+                </ng-container>
+
+                <div class="form-group row">
+                  <b>Quotation Details</b>
+                  <ag-grid-angular *ngIf="show" style="width: 100%; height: 180px;"
+                                   class="ag-theme-balham"
+                                   [rowData]="QuotationDeatilsRowData"
+                                   [columnDefs]="QuotationDeatilsColumnDefs"
+                                   [rowSelection]="rowSelection"
+                                   [enableSorting]="true"
+                                   [gridOptions]="gridOptions"
+                                   [enableColResize]="true"
+                                   [paginationPageSize]="10"
+                                   [context]="context"
+                                   [suppressRowClickSelection]="true"
+                                   [frameworkComponents]="frameworkComponents"
+                                   (gridReady)="onGridReadyQuotationDetailsList($event)"
+                                   (cellValueChanged)="onCellValueChanged($event)"
+                                   (selectionChanged)="getSelectedRows2($event)">
+                  </ag-grid-angular>
+
+                </div>
+
+                <!--<div class="form-group row">
+                  <div class="col-12">
+                    <button type="button" style="padding:6px 30px; margin-right:30px;" class="btn btn-primary float-right" (click)="onUpdateItemQtY()">Update - Item </button>
+                  </div>
+                </div>-->
+                <!--<ng-container *ngIf="show2">
+                <div class="col-sm-12">
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Unit Value (without Tax)</label>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" id="txtUnitValue" value={{objpurchaseOrder.unitValue}} placeholder="Unit Value">
+                    </div>
+
+                    <label class="col-md-2 col-form-label">Unit Value (With Tax) </label>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" id="txtUnitValue" value={{objpurchaseOrder.unitValue}} placeholder="Unit Value">
+                    </div>
+                  </div>-->
+                <!--<div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-6">
+
+                        <div class="form-group row">
+                          <label class="col-md-4 col-form-label">Tax Type</label>
+                          <div class="col-md-8">
+                            <select class="form-control" id="drpTaxtype" [(ngModel)] ="objpurchaseOrder.TaxID" (ngModelChange)="TaxChanged($event)">
+                              <option *ngFor="let Tax of lsttax" value={{Tax.taxID}}>{{Tax.taxName}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-4 col-form-label">Tax Amount</label>
+                          <div class="col-md-8">
+                            <input type="text" class="form-control" id="txtTaxAmount" value={{objpurchaseOrder.taxAmount}} placeholder="Tax Amount">
+
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-12">
+                            <button type="button" style="padding:6px 10px; " class="btn btn-primary float-right" (click)="onAddTax()">Add - Tax</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group row">
+                          <ag-grid-angular style="width: 100%; height: 180px;"
+                                           class="ag-theme-balham"
+                                           [rowData]="rowData4"
+                                           [columnDefs]="columnDefs4"
+                                           [rowSelection]="rowSelection"
+                                           [enableSorting]="true"
+                                           [enableColResize]="true"
+                                           [context]="context"
+                                           [suppressRowClickSelection]="true"
+                                           [frameworkComponents]="frameworkComponents"
+                                           (gridReady)="onGridReady($event)">
+                          </ag-grid-angular>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+                <!--</div>
+                </ng-container>-->
+
+
+
+
+
+              </div>
+            </div>
+          </ng-container>
+
+
+          <div class="card-footer">
+            <ng-container *ngIf="show">
+              <div class="row">
+                <div class="col-12" >
+                  <!--<button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>-->
+                  <button type="reset" style="padding:6px 40px; margin-left:20px;" class="btn btn-danger" >Reset</button>
+                  <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SavePurchaseOrder()">Save</button>
+                 
+                </div>
+
+              </div>
+            </ng-container>
+          </div>
+
+
+          <!-- purchase order report ----------------------------------------------------------------------------------->
+          <!--<div class="card">
+            <ng-container>
+
+              <br /><br />
+              <h1 style="text-align:center;">Purchase Order</h1>
+              <br /><br />
+    
+            
+              <div>
+                <table style="border:0px solid #000000; border-collapse:collapse;float:right;width:100%">
+                  <tr>
+                    <th rowspan="2" style="padding:10px"><img src="../../../assets/img/cicralogo/cicra.jpg" width="150" /></th>
+
+                    <th style="border:1px solid #000000; padding :2px;padding :10px; text-align:left;width:15%">VAT Reg.No</th>
+                    <th style="border:1px solid #000000; padding :2px;padding :10px; text-align:left;width:15%">Date</th>
+                    <th style="border:1px solid #000000; padding :2px;padding :10px; text-align:left;width:15%">P.O No</th>
+                  </tr>
+                  <tr>
+                    <td style="border:1px solid #000000; padding :2px;padding :10px; text-align:left;width:15%">425354644-564</td>
+                    <td style="border:1px solid #000000; padding :2px;padding :10px; text-align:left;width:15%">30/03/2020</td>
+                    <td style="border:1px solid #000000; padding :2px;padding :10px; text-align:left;width:15%">000031</td>
+                  </tr>
+                </table>
+              </div>
+              <br />
+
+              <div>
+                <table style="border:0px solid #000000; border-collapse:collapse;float:right;width:100%">
+                  <tr>
+                    <th rowspan="5" style="border:0px solid #000000; padding :10px; text-align:center">
+                      <p style="text-align:left">
+                        CICRA Consultancies(Pvt)Ltd<br />No.1002, 8th Floor,<br />No.1004, Eighth Floor,<br />
+                        Unity Plaza, No.02,<br />Galle Road.<br />Colombo 04.<br /><br />
+                        Tel:(+94)112 596 200<br />
+                        Fax:(+94)718 800 871<br />
+                        Email:<a href="info@cicra.lk">info@cicra.lk</a><br />
+                        Web:<a href="www.cicra.lk">www.cicra.lk</a><br />
+                        Registration No: PV 82893
+
+
+                      </p>
+                    </th>
+                    <th rowspan="3" style="border:0px solid #000000; padding :10px; text-align:center;width:15%"></th>
+                    <th style="border:1px solid #000000; padding :2px; text-align:left;width:30%">Invoice To:</th>
+                  </tr>
+                  <tr>
+                    <td style="border:1px solid #000000; padding :2px; text-align:left;width:30%">Credence Security DMCC <br /> Indigo Icon, Unit #2201,<br />Jumeirah lakes,Towers,Dubai<br />Landmark:JLT,Cluster F<br />P.O.Box:488130,Dubai.</td>
+                  </tr>
+                  <tr>
+                    <td style="border:1px solid #000000; padding :2px; text-align:left;width:30%;font-weight:bold">Attention To:</td>
+                  </tr>
+                  <tr>
+                    <td style="border:1px solid #000000; padding :5px; text-align:left;width:15%;font-weight:bold">Quotation No:</td>
+                    <td rowspan="2" style="border:1px solid #000000; padding :5px; text-align:left;width:30%;vertical-align:top">Product Manager</td>
+                  </tr>
+                  <tr>
+                    <td style="border:1px solid #000000; padding :5px; text-align:left;width:15%">Q3455666</td>
+                  </tr>
+                </table>
+              </div>
+
+
+              <div class="form-group row">
+
+                <div class="col-md-12">
+                  <table style="border:1px solid #000000;border-collapse:collapse;width:100%">
+                    <thead>
+                      <tr style="border:1px solid #000000;background-color:#9ffeec">
+                        <th style="border:1px solid #000000;padding :10px; text-align:center">Item</th>
+                        <th style="border:1px solid #000000;padding :10px; text-align:center">Description</th>
+                        <th style="border:1px solid #000000;padding :10px; text-align:center;width:15%">Quantity</th>
+                        <th style="border:1px solid #000000;padding :10px; text-align:center;width:15%">Unit Price</th>
+                        <th style="border:1px solid #000000;padding :10px; text-align:center;width:15%">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="border:1px solid #000000;padding :10px; text-align:left;height:50px;vertical-align:top">13000300</td>
+                        <td style="border:1px solid #000000;padding :10px; text-align:left;vertical-align:top">1 Year SMS for FTK-SUITE<br />Dongal No:23242424. Expiration Date:2019/12/31<br /><br />Last Fee-1-1-2020-31-03-2020</td>
+                        <td style="border:1px solid #000000;padding :10px; text-align:center;vertical-align:top">1</td>
+                        <td style="border:1px solid #000000;padding :10px; text-align:right;vertical-align:top">1,133.50</td>
+                        <td style="border:1px solid #000000;padding :10px; text-align:right;vertical-align:top">1,133.50</td>
+
+                      </tr>
+                      <tr>
+                        <th colspan="2" style="border:1px solid #000000;padding :10px; text-align:center;vertical-align:top">Vat Summary</th>
+                        <th colspan="2" style="border:1px solid #000000;padding :10px; text-align:left;vertical-align:top">SubTotal</th>
+                        <td style="border:1px solid #000000;padding :10px; text-align:right;vertical-align:top">USD 3489.38</td>
+
+                      </tr>
+                      <tr>
+                        <td rowspan="2" colspan="2" style="border:1px solid #000000;padding :10px; text-align:center"></td>
+                        <th colspan="2" style="border:1px solid #000000;padding :10px; text-align:left">Vat</th>
+                        <td style="border:1px solid #000000;padding :10px; text-align:right">USD 0.00</td>
+                      </tr>
+                      <tr>
+
+                        <th colspan="2" style="border:1px solid #000000;padding :10px; text-align:left">Total</th>
+                        <td style="border:1px solid #000000;padding :10px; text-align:right">USD 3489.38</td>
+                      </tr>
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+             
+            </ng-container>
+
+          </div>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ 

@@ -1,0 +1,142 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Purchase Request</strong>
+          <button type="button" class="close" style="padding:4px 10px;" [mat-dialog-close]="Cancel" cdkFocusInitial aria-label="Close">
+            <span aria-hidden="true">X</span>
+          </button>
+          <!--<ng-container *ngIf="show">-->
+          <!--<button type="button" class="close" style="padding:4px 10px;" (click)="onReject()" aria-label="Close">
+    <span aria-hidden="true">X</span>
+  </button>-->
+          <!--</ng-container>-->
+        </div>
+        <div class="card-body">
+          <div class="row">
+            
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Request Title</label>
+                    <div class="col-md-10">
+                      <input type="text" class="form-control" id="txtRequestTitle" [(ngModel)]="objApprovalScreen.requestTitle" placeholder="Enter Request Title" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Item Category</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpcategory" [(ngModel)]="objApprovalScreen.categoryID" (ngModelChange)="CategoryChanged($event)" disabled>
+                        <option disabled="disabled"  [hidden]="true" *ngFor="let Cat of lstCategory" value={{Cat.categoryID}}>{{Cat.categoryName}}</option>
+                      </select>
+                    </div>
+                    <label class="col-md-2 col-form-label">Item Type</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpitemtype" [(ngModel)]="objApprovalScreen.itemTypeID" (ngModelChange)="ItemTypeChanged($event)" disabled>
+                        <option disabled="disabled"  [hidden]="true" *ngFor="let itmType of lstItemType" value={{itmType.itemTypeID}}>{{itmType.itemTypeName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Item Make</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpitemmake" [(ngModel)]="objApprovalScreen.makeID" (ngModelChange)="MakeChanged($event)" disabled>
+                        <option disabled="disabled" [hidden]="true" *ngFor="let itmMake of lstMake" value={{itmMake.makeID}}>{{itmMake.makeName}}</option>
+                      </select>
+                    </div>
+
+                    <label class="col-md-2 col-form-label">Item Model</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpitemmodel" [(ngModel)]="objApprovalScreen.modelID" (ngModelChange)="ModelChanged($event)" disabled>
+                        <option disabled="disabled" [hidden]="true" *ngFor="let itmModel of lstModel" value={{itmModel.modelID}}>{{itmModel.modelName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Priority</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drppriority" [(ngModel)]="objApprovalScreen.priorityID" (ngModelChange)="PriorityChanged($event)" disabled>
+                        <option disabled="disabled" [hidden]="true" *ngFor="let priority of lstPriority" value={{priority.priorityID}}>{{priority.priorityLevelName}}</option>
+                      </select>
+                    </div>
+
+                    <label class="col-md-2 col-form-label">Item Description</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="drpitemdescription" [(ngModel)]="objApprovalScreen.itemID" (ngModelChange)="ItemDescriptionChanged($event)" disabled>
+                        <option disabled="disabled" [hidden]="true" *ngFor="let item of lstItemDescription" value={{item.itemID}}>{{item.itemDescription}}</option>
+                      </select>
+                    </div>
+
+
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="date-input">Requested Date</label>
+                    <div class="col-md-4">
+                      <input disabled class="form-control" id="dtrequesteddate" type="datetime" name="requested-date" [(ngModel)]="objApprovalScreen.requestedDateTime">
+                    </div>
+                    <label class="col-md-2 col-form-label" for="date-input">Required Date</label>
+                    <div class="col-md-4">
+                      <input disabled="disabled" class="form-control" id="dtrequireddate" type="date" name="required-date" [(ngModel)]="objApprovalScreen.requiredDate">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2   col-form-label" >Is Replaceble</label>
+                    <div class="col-md-1">
+                      <input [(ngModel)]="objApprovalScreen.isReplaceble" type="checkbox" disabled/>
+                    </div>
+                    <label class="col-md-1 col-form-label">Asset Code</label>
+                    <div class="col-md-2">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="txtAssetCode" [(ngModel)]="objApprovalScreen.assetCode" placeholder="Asset Code" disabled>
+                        <!--<div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="button" disabled>?</button>
+                        </div>-->
+                      </div>
+
+                    </div>
+
+                    <label class="col-md-1 col-form-label">No. of Units</label>
+                    <div class="col-md-2">
+                      <input type="text" class="form-control" id="txtnoofunits" [(ngModel)]="objApprovalScreen.noOfUnits" placeholder="Units" disabled>
+                    </div>
+                    <label class="col-md-1 col-form-label">Approver</label>
+                    <div class="col-md-2">
+                      <select class="form-control" id="drpapprover" [(ngModel)]="objApprovalScreen.approverID " (ngModelChange)="ApproverChanged($event)" disabled>
+                        <option disabled="disabled"  [hidden]="true" *ngFor="let approver of lstApprover" value={{approver.approverID}}>{{approver.approverName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="remarks">Remark</label>
+                    <div class="col-md-4">
+                      <textarea id="txtRemarks" name="remarks" rows="5" class="form-control" [(ngModel)]="objApprovalScreen.remark" placeholder="Remarks" disabled></textarea>
+                    </div>
+                    <!--<label class="col-md-2 col-form-label" for="remarks" >Attachement</label>
+                    <div class="col-md-3">
+                      <input type="file" name="myFile" disabled>
+                    </div>-->
+                    <!--<div class="col-2 ">
+                      <button type="button" style="padding:6px 30px;" class="btn btn-primary float-right" (click)="onAdd()">ADD</button>
+                    </div>-->
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <!--<div class="row">
+                    <div class="col-12">
+                      <button type="button" style="padding:6px 40px;" class="btn btn-primary float-left" (click)="onNew()">New</button>
+                      <button type="reset" style="padding:6px 40px; margin-left:10px;" class="btn btn-danger" (click)="reset()">Reset</button>
+                      <button type="button" style="padding:6px 40px;" class="btn btn-success float-right" (click)="SavePurchaseRequest()">Save</button>
+                    </div>
+                  </div>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
